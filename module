@@ -1,3 +1,13 @@
+/*
 module.exports.hello = (name) => {
   return `Hello World, ${name}!!!`
+}
+*/
+module.exports = {
+  hello: (name) => {
+    return `Hello World, ${name}!!!`
+  },
+  import: (name) => {
+    return `Import module, ${name}!!!`
+  }
 }
