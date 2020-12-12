@@ -18,7 +18,7 @@ const checkUpdate = async (moduleName, version) => {
 }
 
 const installedVersion = (moduleName) => {
-    console.log('call installedVersion')
+    console.log(`call installedVersion ${moduleName}`)
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
     let baseDir = `${dir}/modules`
@@ -33,7 +33,7 @@ const installedVersion = (moduleName) => {
 }
 
 const updateVersion = async (moduleName, isNew) => {
-    console.log('call updateVersion')
+    console.log(`call updateVersion ${moduleName}`)
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
     let baseDir = `${dir}/modules`
@@ -62,7 +62,7 @@ const updateVersion = async (moduleName, isNew) => {
 }
 
 const installModule = async (moduleName) => {
-    console.log('call installModule')
+    console.log(`call installModule ${moduleName}`)
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
     const baseDir = `${dir}/modules`
@@ -73,12 +73,12 @@ const installModule = async (moduleName) => {
     return writeModule(moduleName, true)
 }
 const updateModule = async (moduleName) => {
-    console.log('call updateModule')
+    console.log(`call updateModule ${moduleName}`)
     return writeModule(moduleName, false)
 }
 
 const writeModule = async (moduleName, isNew) => {
-    console.log('call writeModule')
+    console.log(`call writeModule ${moduleName}`)
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
     const baseDir = `${dir}/modules`
@@ -91,7 +91,7 @@ const writeModule = async (moduleName, isNew) => {
 }
 
 const install = async (moduleName) => {
-    console.log('call install')
+    console.log(`call install ${moduleName}`)
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
     const baseDir = `${dir}/modules`
