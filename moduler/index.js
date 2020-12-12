@@ -10,6 +10,7 @@ const getModuleVersion = async (moduleName) => {
 const checkUpdate = async (moduleName, version) => {
     console.log(`call checkUpdate ${moduleName}`)
     let curModule = await getModuleVersion(moduleName)
+    console.log(`curModule: ${JSON.stringify(curModule)}`)
     if (curModule) {
         return (curModule.version !== version) ? true : false
     } else {
