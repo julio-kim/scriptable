@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "modules": [{
         "name": "hello",
-        "version": "1.0.4",
-        "description": "* 이름을 Capitalize한 후 출력하도록 변경\n* lodash 모듈 추가됨"
+        "version": "1.0.5",
+        "description": "ext module 테스트 중..."
     }],
     "extModules": [{
         "name": "lodash",
