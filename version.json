@@ -5,8 +5,7 @@
         "name": "hello",
         "version": "1.0.6",
         "description": "ext module 테스트 중..."
-    }],
-    "extModules": [{
+    }, {
         "name": "lodash",
         "version": "1.8.3",
         "description": "Update 3rd module"
