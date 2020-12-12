@@ -3,7 +3,7 @@ const getModuleVersion = async (moduleName) => {
     let request = new Request(`https://julio-kim.github.io/scriptable/version.json`)
     let moduler = await request.loadJSON()
     console.log(JSON.stringify(moduler, null, 4))
-    return moduler.modules.concat(moduler.modules)
+    return moduler.modules.concat(moduler.extModules)
         .filter(module => module.name === moduleName)[0]
 }
 
