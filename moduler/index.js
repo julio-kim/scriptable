@@ -1,4 +1,5 @@
 const getModuleVersion = async (moduleName) => {
+    console.log('call getModuleVersion')
     let request = new Request(`https://julio-kim.github.io/scriptable/modules/index.json`)
     let moduler = await request.loadJSON()
     return moduler.modules.concat(moduler.modules)
@@ -6,6 +7,7 @@ const getModuleVersion = async (moduleName) => {
 }
 
 const checkUpdate = async (moduleName, version) => {
+    console.log('call checkUpdate')
     let curModule = await getModuleVersion(moduleName)
     if (curModule) {
         return (curModule.version !== version) ? true : false
@@ -15,6 +17,7 @@ const checkUpdate = async (moduleName, version) => {
 }
 
 const installedVersion = (moduleName) => {
+    console.log('call installedVersion')
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
     let baseDir = `${dir}/modules`
@@ -29,6 +32,7 @@ const installedVersion = (moduleName) => {
 }
 
 const updateVersion = async (moduleName, isNew) => {
+    console.log('call updateVersion')
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
     let baseDir = `${dir}/modules`
@@ -57,6 +61,7 @@ const updateVersion = async (moduleName, isNew) => {
 }
 
 const installModule = async (moduleName) => {
+    console.log('call installModule')
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
     const baseDir = `${dir}/modules`
@@ -67,10 +72,12 @@ const installModule = async (moduleName) => {
     return writeModule(moduleName, true)
 }
 const updateModule = async (moduleName) => {
+    console.log('call updateModule')
     return writeModule(moduleName, false)
 }
 
 const writeModule = async (moduleName, isNew) => {
+    console.log('call writeModule')
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
     const baseDir = `${dir}/modules`
@@ -83,6 +90,7 @@ const writeModule = async (moduleName, isNew) => {
 }
 
 const install = async (moduleName) => {
+    console.log('call install')
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
     const baseDir = `${dir}/modules`
