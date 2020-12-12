@@ -39,6 +39,7 @@ const updateVersion = (moduleInfo, isNew) => {
         ]
     }
     versions.push(moduleInfo)
+    fm.writeString(`${dir}/version.json`, JSON.stringify(versions))
 
     if (!isNew) {
         let noti = new Notification()
