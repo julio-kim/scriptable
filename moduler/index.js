@@ -39,18 +39,18 @@ const updateVersion = async (moduleName, isNew) => {
     let baseDir = `${dir}/modules`
     let curModule = await getModuleVersion(moduleName)
 
-    let versions = []
+    let versions = { "modules": [] }
     if (fm.fileExists(`${baseDir}/version.json`)) {
         versions = JSON.parse(fm.readString(`${baseDir}/version.json`))
     }
-    const index = versions.findIndex(item => item.name === curModule.name)
+    const index = versions.modules.findIndex(item => item.name === curModule.name)
     if (index >= 0) {
-        versions = [
-            ...versions.slice(0, index),
-            ...versions.slice(index + 1)
+        versions.modules = [
+            ...versions.modules.slice(0, index),
+            ...versions.modules.slice(index + 1)
         ]
     }
-    versions.push(curModule)
+    versions.modules.push(curModule)
     fm.writeString(`${baseDir}/version.json`, JSON.stringify(versions))
 
     if (!isNew) {
