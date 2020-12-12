@@ -27,7 +27,10 @@ const updateVersion = (moduleInfo, isNew) => {
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
 
-    let versions = JSON.parse(fm.readString(`${dir}/version.json`))
+    let versions = []
+    if (fm.fileExists(`${dir}/version.json`)) {
+        versions = JSON.parse(fm.readString(`${dir}/version.json`))
+    }
     const index = versions.findIndex(item => item.name === moduleInfo.name)
     if (index >= 0) {
         versions = [
