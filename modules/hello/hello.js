@@ -1,4 +1,4 @@
-
+/*
 module.exports.hello = (name) => {
     console.log('call hello')
     const { install } = importModule('/modules')
@@ -9,8 +9,7 @@ module.exports.hello = (name) => {
     let capName = lodash.capitalize(name)
     return `Hello ${capName}`
 }
-/*
+*/
 module.exports.hello = (name) => {
     return `Hello ${name}`
 }
-*/
