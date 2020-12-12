@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "modules": [{
         "name": "hello",
-        "version": "1.0.6",
+        "version": "1.0.7",
         "description": "ext module 테스트 중..."
     }, {
         "name": "lodash",
