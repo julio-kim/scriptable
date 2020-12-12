@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "modules": [{
         "name": "hello",
-        "version": "1.0.2",
-        "description": "Hello Scriptable Moduler"
+        "version": "1.0.3",
+        "description": "* 이름을 Capitalize한 후 출력하도록 변경\n* lodash 모듈 추가됨"
     }],
     "extModules": [{
         "name": "lodash",

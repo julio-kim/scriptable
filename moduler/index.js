@@ -55,7 +55,7 @@ const updateVersion = async (moduleName, isNew) => {
 
     if (!isNew) {
         let noti = new Notification()
-        noti.title = `Updated ${curModule.name} module`
+        noti.title = `${curModule.name} 모듈이 업데이트 되었습니다.`
         noti.body = curModule.description
         noti.schedule()    
     }
