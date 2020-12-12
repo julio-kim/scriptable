@@ -91,7 +91,7 @@ const install = async (moduleName) => {
     } else {
         await installModule(moduleName)
     }
-    return importModule('/modules/${moduleName}/${moduleName}')
+    return importModule(`/modules/${moduleName}/${moduleName}`)
 }
 
 module.exports = {
