@@ -1,6 +1,6 @@
 const getLodash = async () => {
     console.log('call hello')
-    const { install } = importModule('/modules/moduler/moduler.js')
+    const { install } = importModule('/modules/moduler')
     console.log('after install moduler')
     return install('lodash')
 }

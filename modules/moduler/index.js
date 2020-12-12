@@ -83,9 +83,9 @@ const writeModule = async (moduleName, isNew) => {
     let dir = fm.documentsDirectory()
     const baseDir = `${dir}/modules`
 
-    let request = new Request(`https://julio-kim.github.io/scriptable/modules/${moduleName}/${moduleName}.js`)
+    let request = new Request(`https://julio-kim.github.io/scriptable/modules/${moduleName}/index.js`)
     let moduleFile = await request.loadString()
-    fm.writeString(`${baseDir}/${moduleName}/${moduleName}.js`, moduleFile)
+    fm.writeString(`${baseDir}/${moduleName}/index.js`, moduleFile)
 
     await updateVersion(moduleName, isNew)
 }
@@ -100,7 +100,7 @@ const install = async (moduleName) => {
         fm.createDirectory(baseDir)
     }
 
-    if (fm.fileExists(`${baseDir}/${moduleName}/${moduleName}.js`)) {
+    if (fm.fileExists(`${baseDir}/${moduleName}/index.js`)) {
         let moduleVer = installedVersion(moduleName)
         if (await checkUpdate(moduleName, moduleVer.version)) {
             await updateModule(moduleName)
@@ -108,7 +108,7 @@ const install = async (moduleName) => {
     } else {
         await installModule(moduleName)
     }
-    let targetModule = `/modules/${moduleName}/${moduleName}.js`
+    let targetModule = `/modules/${moduleName}`
     console.log(`targetModule: ${targetModule}`)
     console.log(`importModule: ${importModule}`)
     return importModule(targetModule)
