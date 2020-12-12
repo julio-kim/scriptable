@@ -110,6 +110,7 @@ const install = async (moduleName) => {
     }
     let targetModule = `/modules/${moduleName}/${moduleName}.js`
     console.log(`targetModule: ${targetModule}`)
+    console.log(`importModule: ${importModule}`)
     return importModule(targetModule)
 }
 
