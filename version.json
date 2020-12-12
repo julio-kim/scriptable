@@ -2,9 +2,9 @@
     "name": "scriptable-moduler",
     "version": "1.0.0",
     "modules": [{
-        "name": "hello-world",
+        "name": "hello",
         "version": "1.0.0",
-        "Description": "Hello Scriptable Moduler"
+        "description": "Hello Scriptable Moduler"
     }],
     "extModules": [{
         "name": "lodash",
