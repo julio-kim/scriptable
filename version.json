@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "modules": [{
         "name": "hello",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "description": "Hello Scriptable Moduler"
     }],
     "extModules": [{
