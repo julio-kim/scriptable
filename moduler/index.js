@@ -1,8 +1,12 @@
-const checkUpdate = async (moduleName, version) => {
+const getModuleVersion = async (moduleName) => {
     let request = new Request(`https://julio-kim.github.io/scriptable/modules/index.json`)
     let moduler = await request.loadJSON()
-    let curModule = moduler.modules.concat(moduler.modules)
+    return moduler.modules.concat(moduler.modules)
         .filter(module => module.name === moduleName)[0]
+}
+
+const checkUpdate = async (moduleName, version) => {
+    let curModule = await getModuleVersion(moduleName)
     if (curModule) {
         return (curModule.version !== version) ? true : false
     } else {
@@ -13,8 +17,9 @@ const checkUpdate = async (moduleName, version) => {
 const installedVersion = (moduleName) => {
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
+    let baseDir = `${dir}/modules`
 
-    let version = JSON.parse(fm.readString(`${dir}/version.json`))
+    let version = JSON.parse(fm.readString(`${baseDir}/version.json`))
     let foundModule = version.modules.filter(module => module.name === moduleName)
     if (foundModule.length > 0) {
         return foundModule[0]
@@ -23,23 +28,25 @@ const installedVersion = (moduleName) => {
     }
 }
 
-const updateVersion = (moduleInfo, isNew) => {
+const updateVersion = async (moduleName, isNew) => {
     let fm = FileManager.iCloud()
     let dir = fm.documentsDirectory()
+    let baseDir = `${dir}/modules`
+    let curModule = await getModuleVersion(moduleName)
 
     let versions = []
-    if (fm.fileExists(`${dir}/version.json`)) {
-        versions = JSON.parse(fm.readString(`${dir}/version.json`))
+    if (fm.fileExists(`${baseDir}/version.json`)) {
+        versions = JSON.parse(fm.readString(`${baseDir}/version.json`))
     }
-    const index = versions.findIndex(item => item.name === moduleInfo.name)
+    const index = versions.findIndex(item => item.name === curModule.name)
     if (index >= 0) {
         versions = [
             ...versions.slice(0, index),
             ...versions.slice(index + 1)
         ]
     }
-    versions.push(moduleInfo)
-    fm.writeString(`${dir}/version.json`, JSON.stringify(versions))
+    versions.push(curModule)
+    fm.writeString(`${baseDir}/version.json`, JSON.stringify(versions))
 
     if (!isNew) {
         let noti = new Notification()
@@ -72,7 +79,7 @@ const writeModule = async (moduleName, isNew) => {
     let moduleFile = await request.loadString()
     fm.writeString(`${baseDir}/${moduleName}/${moduleName}.js`, moduleFile)
 
-    updateVersion(module, isNew)
+    await updateVersion(moduleName, isNew)
 }
 
 const install = async (moduleName) => {
