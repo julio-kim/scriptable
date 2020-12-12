@@ -53,6 +53,10 @@ const updateModule = async (moduleName) => {
 }
 
 const writeModule = async (moduleName, isNew) => {
+    let fm = FileManager.iCloud()
+    let dir = fm.documentsDirectory()
+    const baseDir = `${dir}/modules`
+    
     let request = new Request(`https://julio-kim.github.io/scriptable/modules/${moduleName}/${moduleName}.js`)
     let moduleFile = await request.loadString()
     fm.writeString(`${baseDir}/${moduleName}/${moduleName}.js`, moduleFile)
