@@ -1,5 +1,4 @@
-/*
-module.exports.hello = (name) => {
+module.exports.hello = async (name) => {
     console.log('call hello')
     const { install } = importModule('/modules')
     console.log('after install moduler')
@@ -9,7 +8,9 @@ module.exports.hello = (name) => {
     let capName = lodash.capitalize(name)
     return `Hello ${capName}`
 }
-*/
+/*
 module.exports.hello = (name) => {
+
     return `Hello ${name}`
 }
+*/
