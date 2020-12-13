@@ -92,6 +92,10 @@ class CovidStatBase {
         dateTxt.font = Font.thinSystemFont(15)
     }
 
+    setBackgroundImage (image) {
+        this.widget.backgroundImage = image
+    }
+
     present () {
         if (config.runsInWidget) {
             Script.setWidget(this.widget)

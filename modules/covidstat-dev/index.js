@@ -22,11 +22,16 @@ const _loadData = async () => {
         date: covid.date.replace(/\(|\)/g, '').split(',')[0]
     }
 }
+/*
+const _areaGraph = () => {
 
+}
+*/
 class CovidStat extends CovidStatBase {
     async init () {
         let covid = await _loadData()
         await super.initBase('코로나-19', source, covid)
+//        super.setBackgroundImage(_areaGraph())
     }
 }
 

@@ -62,7 +62,6 @@ const _loadImage = async (imageUrl) => {
     return await request.loadImage()
 }
 
-
 class CovidStatLive {
     constructor (options) {
         this.widget = new ListWidget()
