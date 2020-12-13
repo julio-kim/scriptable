@@ -4,22 +4,22 @@
     "modules": [{
         "name": "covidstat",
         "version": "1.0.0",
-        "description": "Covid Stat Initial commit..."
+        "description": "✽ Covid Stat Initial commit..."
     }, {
         "name": "covidstatlive",
-        "version": "0.0.1",
-        "description": "Covid Stat Live Initial commit..."
+        "version": "1.0.0",
+        "description": "✽ Covid Stat Live Initial commit..."
     }, {
         "name": "hello",
         "version": "1.0.10",
-        "description": "ext module 테스트 중..."
+        "description": "✽ ext module 테스트 중..."
     }, {
         "name": "lodash",
         "version": "1.8.3",
-        "description": "Update 3rd module"
+        "description": "✽ Update 3rd module"
     }, {
         "name": "moment",
         "version": "2.29.1",
-        "description": "Update 3rd module"
+        "description": "✽ Update 3rd module"
     }]
 }
