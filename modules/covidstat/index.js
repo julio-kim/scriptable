@@ -1,3 +1,9 @@
+const _init = function () {
+    this.widget.setPadding(0, 0, 0, 0)
+    let txt = this.widget.addText('CovidStat')
+    txt.centerAlignText()
+}
+
 class CovidStat {
     constructor (options) {
         this.widget = new ListWidget()
@@ -5,9 +11,7 @@ class CovidStat {
 
         }, options)
 
-        this.widget.setPadding(0, 0, 0, 0)
-        let txt = this.widget.addText('CovidStat')
-        txt.centerAlignContent()
+        _init.bind(this)()
     }
 
     present () {
