@@ -11,7 +11,7 @@ class CovidStat {
 
         }, options)
 
-        _init.bind(this)()
+        _init()
     }
 
     present () {
