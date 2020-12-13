@@ -3,7 +3,7 @@ const _init = function () {
     let txt = this.widget.addText('CovidStat')
     txt.centerAlignText()
 }
-
+/*
 const _loadData = async function () {
     const source = 'http://ncov.mohw.go.kr'
     let webView = new WebView()
@@ -25,6 +25,7 @@ const _loadData = async function () {
         date: covid.date.replace(/\(|\)/g, '').split(',')[0]
     }
 }
+*/
 
 class CovidStat {
     constructor (options) {
