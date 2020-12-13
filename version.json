@@ -2,6 +2,14 @@
     "name": "scriptable-moduler",
     "version": "1.0.0",
     "modules": [{
+        "name": "covidstat",
+        "version": "0.0.1",
+        "description": "Covid Stat Initial commit..."
+    }, {
+        "name": "covidstatlive",
+        "version": "0.0.1",
+        "description": "Covid Stat Live Initial commit..."
+    }, {
         "name": "hello",
         "version": "1.0.10",
         "description": "ext module 테스트 중..."
