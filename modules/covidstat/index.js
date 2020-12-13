@@ -103,13 +103,13 @@ class CovidStat {
         
         titleStack.addSpacer()
         
-        let countTxt = this.widget.addText(count.toString())
+        let countTxt = this.widget.addText(covid.count.toString())
         countTxt.url = source
         countTxt.centerAlignText()
         countTxt.textColor = Color.white()
-        countTxt.font = Font.thinSystemFont(_getCountSize(count))
+        countTxt.font = Font.thinSystemFont(_getCountSize(covid.count))
         
-        let dateTxt = this.widget.addText(date)
+        let dateTxt = this.widget.addText(covid.date)
         dateTxt.centerAlignText()
         dateTxt.textColor = Color.white()
         dateTxt.font = Font.thinSystemFont(15)
