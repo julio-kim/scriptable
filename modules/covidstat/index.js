@@ -104,7 +104,6 @@ class CovidStat {
         titleStack.addSpacer()
         
         let countTxt = this.widget.addText(covid.count.toString())
-        countTxt.url = source
         countTxt.centerAlignText()
         countTxt.textColor = Color.white()
         countTxt.font = Font.thinSystemFont(_getCountSize(covid.count))
