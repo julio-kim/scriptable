@@ -1,4 +1,4 @@
-const _init = () => {
+const _init = function () {
     this.widget.setPadding(0, 0, 0, 0)
     let txt = this.widget.addText('CovidStat')
     txt.centerAlignContent()
@@ -11,7 +11,7 @@ class CovidStat {
 
         }, options)
 
-        _init()
+        _init.bind(this)()
     }
 
     present () {
