@@ -17,4 +17,4 @@ class CovidStat {
     }
 }
 
-module.exports = CovidStatLive
+module.exports = CovidStat
