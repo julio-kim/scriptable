@@ -5,8 +5,6 @@ const _init = () => {
 }
 
 class CovidStat {
-    #widget
-
     constructor (options) {
         this.widget = new ListWidget()
         let _options = Object.assign({
