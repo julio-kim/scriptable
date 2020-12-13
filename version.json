@@ -11,8 +11,8 @@
         "description": "✽ Covid Stat Initial commit..."
     }, {
         "name": "covidstat-dev",
-        "version": "1.0.0",
-        "description": "✽ Covid Stat Initial commit..."
+        "version": "1.1.0",
+        "description": "✽ 코로나 주간 현황이 그래프로 표기됩니다."
     }, {
         "name": "covidstatlive",
         "version": "1.0.0",

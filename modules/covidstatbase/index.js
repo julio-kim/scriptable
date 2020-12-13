@@ -81,7 +81,7 @@ class CovidStatBase {
         
         titleStack.addSpacer()
         
-        let countTxt = this.widget.addText(covid.count.toString())
+        let countTxt = this.widget.addText(covid.count.toLocalString())
         countTxt.centerAlignText()
         countTxt.textColor = Color.white()
         countTxt.font = Font.thinSystemFont(_getCountSize(covid.count))

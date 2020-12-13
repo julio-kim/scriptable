@@ -22,33 +22,31 @@ const _loadData = async () => {
         date: covid.date.replace(/\(|\)/g, '').split(',')[0]
     }
 }
-/*
-const _areaGraph = () => {
-    let csize = new Size(200, 200) 
-    if (config.widgetFamily == 'small') {
-        csize = new Size(200, 200)
-    } else if (config.widgetFamily == 'medium') {    
-        csize = new Size(400, 200)
-    } else { // large
-        csize = new Size(400, 400)        
+
+const _areaGraph = (series) => {
+    let size = new Size(200, 200) 
+    if (config.widgetFamily == 'medium') {    
+        size = new Size(400, 200)
+    } else if (config.widgetFamily == 'large') {
+        size = new Size(400, 400)        
     }
     
     let chart = new SimpleAreaChart({
-        width: csize.width,
-        height: csize.height,
+        width: size.width,
+        height: size.height,
         minValue: 0,
         fillColor: '#ff0000'
     })
-    chart.render(covid.wpsData.confirm_day)
-    widget.backgroundImage = chart.toImage()
+    chart.render(series)
+    return chart.toImage()
 }
-*/
+
 class CovidStat extends CovidStatBase {
     async init () {
         let covid = await _loadData()
         await super.initBase('코로나-19', source, covid)
-//        super.setBackgroundImage(_areaGraph())
+        super.setBackgroundImage(_areaGraph(covid.wpsData.confirm_day))
     }
-}
+}   
 
 module.exports = CovidStat
