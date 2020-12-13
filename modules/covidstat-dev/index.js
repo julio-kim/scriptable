@@ -24,7 +24,23 @@ const _loadData = async () => {
 }
 /*
 const _areaGraph = () => {
-
+    let csize = new Size(200, 200) 
+    if (config.widgetFamily == 'small') {
+        csize = new Size(200, 200)
+    } else if (config.widgetFamily == 'medium') {    
+        csize = new Size(400, 200)
+    } else { // large
+        csize = new Size(400, 400)        
+    }
+    
+    let chart = new SimpleAreaChart({
+        width: csize.width,
+        height: csize.height,
+        minValue: 0,
+        fillColor: '#ff0000'
+    })
+    chart.render(covid.wpsData.confirm_day)
+    widget.backgroundImage = chart.toImage()
 }
 */
 class CovidStat extends CovidStatBase {
