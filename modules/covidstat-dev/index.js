@@ -1,4 +1,4 @@
-const CovidStatBase = importModule('covidstatbase')
+const CovidStatBase = importModule('/modules/covidstatbase')
 
 const source = 'http://ncov.mohw.go.kr'
 
