@@ -22,6 +22,10 @@
         "version": "1.0.0",
         "description": "✽ Covid Stat Live Initial commit..."
     }, {
+        "name": "simplechart",
+        "version": "1.0.0",
+        "description": "✽ Simple Chart Initial commit..."
+    }, {
         "name": "hello",
         "version": "1.0.10",
         "description": "✽ ext module 테스트 중..."

@@ -39,23 +39,22 @@ class SimpleAreaChart {
         this.ctx = new DrawContext();    
 
         this.options = Object.assign({
+            width: undefined,
+            height: undefined,
             minValue: undefined,
             maxValue: undefined,
             opaque: false,
             fillColor: '#880000'
         }, options)
 
-        if (config.widgetFamily == 'small') {
-            this.ctx.size = new Size(200, 200)
-        } else if (config.widgetFamily == 'medium') {    
-            this.ctx.size = new Size(400, 200)
-        } else { // large
-            this.ctx.size = new Size(400, 400)        
+        if (!this.options.width || !this.options.height) {
+            throw new Error('SimpleAreaChart: (width / height) is requried options')
+        } else {
+            this.ctx.size = new Size(this.options.width, this.options.height)
         }
     
         this.ctx.opaque = this.options.opaque;
         this.ctx.setFillColor(new Color(this.options.fillColor));
-        
     }
     
     render (series) {
