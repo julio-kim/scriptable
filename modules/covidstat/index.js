@@ -1,10 +1,8 @@
-const _init = () => {
-
-}
-
 class CovidStat {
+    #widget
+
     constructor (options) {
-        this.widget = new ListWidget()
+        this.#widget = new ListWidget()
         let _options = Object.assign({
 
         }, options)
@@ -13,17 +11,17 @@ class CovidStat {
     }
 
     #init () {
-        this.widget.setPadding(0, 0, 0, 0)
-        let txt = this.widget.addText('CovidStat')
+        this.#widget.setPadding(0, 0, 0, 0)
+        let txt = this.#widget.addText('CovidStat')
         txt.centerAlignContent()
     }
 
     present () {
         if (config.runsInWidget) {
-            Script.setWidget(this.widget)
+            Script.setWidget(this.#widget)
         } else {
             // for Test
-            this.widget.presentSmall()
+            this.#widget.presentSmall()
         }
         Script.complete()
     }
