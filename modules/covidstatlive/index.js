@@ -102,7 +102,7 @@ class CovidStatLive {
         
         titleStack.addSpacer(2)
         
-        let titleTxt = titleStack.addText('코로나-19')
+        let titleTxt = titleStack.addText('코로나LIVE')
         titleTxt.centerAlignText()
         titleTxt.textColor = Color.white()
         titleTxt.font = Font.boldRoundedSystemFont(_getTitleSize())
