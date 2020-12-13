@@ -1,6 +1,8 @@
+const source = 'http://ncov.mohw.go.kr'
+
 const _loadData = async () => {
     let webView = new WebView()
-    await webView.loadURL('http://ncov.mohw.go.kr')
+    await webView.loadURL(source)
 
     let covid = await webView.evaluateJavaScript(`
         const baseSelector = 'div.mainlive_container div.liveboard_layout '
@@ -61,7 +63,7 @@ class CovidStat {
     constructor (options) {
         this.widget = new ListWidget()
         this.widget.setPadding(0, 0, 0, 0)
-        this.widget.url = 'http://ncov.mohw.go.kr'
+        this.widget.url = source
 
         if (options && options.size) {
             let sizes = options.size.split['|']
