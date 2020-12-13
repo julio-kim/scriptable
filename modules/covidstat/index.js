@@ -54,7 +54,7 @@ class CovidStat {
         this.widget = new ListWidget()
         this.widget.setPadding(0, 0, 0, 0)
 
-        if (options.size) {
+        if (options && options.size) {
             let sizes = options.size.split['|']
             options.titleSize = (sizes[0]) ? sizes[0] : undefined
             options.countSize = (sizes[1]) ? sizes[1] : undefined
