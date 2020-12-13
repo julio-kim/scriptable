@@ -1,9 +1,21 @@
+const _init = () => {
+
+}
 
 class CovidStat {
     constructor (options) {
         this.widget = new ListWidget()
+        let _options = Object.assign({
+
+        }, options)
+
+        this.#init()
+    }
+
+    #init () {
         this.widget.setPadding(0, 0, 0, 0)
-        this.widget.addText('CovidStat')
+        let txt = this.widget.addText('CovidStat')
+        txt.centerAlignContent()
     }
 
     present () {
