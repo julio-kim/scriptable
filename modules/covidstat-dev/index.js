@@ -24,6 +24,10 @@ const _loadData = async () => {
 }
 
 class CovidStat extends CovidStatBase {
+    constructor (options) {
+        super(options)
+    }
+
     async init () {
         let covid = await _loadData()
         await super.initBase('코로나-19', source, covid)
