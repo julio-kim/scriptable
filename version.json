@@ -15,7 +15,11 @@
         "description": "✽ Covid Stat Initial commit..."
     }, {
         "name": "covidstatlive",
-        "version": "1.0.1",
+        "version": "1.0.0",
+        "description": "✽ Covid Stat Live Initial commit..."
+    }, {
+        "name": "covidstatlive-dev",
+        "version": "1.0.0",
         "description": "✽ Covid Stat Live Initial commit..."
     }, {
         "name": "hello",
