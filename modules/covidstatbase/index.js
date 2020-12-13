@@ -105,4 +105,4 @@ class CovidStatBase {
     }
 }
 
-moduler.exports = CovidStatBase
+module.exports = CovidStatBase
