@@ -1,7 +1,6 @@
 const _loadData = async () => {
-    const source = 'http://ncov.mohw.go.kr'
     let webView = new WebView()
-    await webView.loadURL(source)
+    await webView.loadURL('http://ncov.mohw.go.kr')
 
     let covid = await webView.evaluateJavaScript(`
         const baseSelector = 'div.mainlive_container div.liveboard_layout '
@@ -37,22 +36,22 @@ const _getIcon = async (iconName, color = 'white') => {
     if (fm.fileExists(path)) {
         return fm.readImage(path)
     } else {
-        let iconImage = await loadImage(`https://iconsdb.com/icons/download/${color}/${iconName}.png`)
+        let iconImage = await _loadImage(`https://iconsdb.com/icons/download/${color}/${iconName}.png`)
         fm.writeImage(path, iconImage)
         return iconImage
     }
 }
 
-const _init = function () {
-    
-    let txt = this.widget.addText('CovidStat')
-    txt.centerAlignText()
+const _loadImage = async (imageUrl) => {
+    let request = new Request(imageUrl)
+    return await request.loadImage()
 }
 
 class CovidStat {
     constructor (options) {
         this.widget = new ListWidget()
         this.widget.setPadding(0, 0, 0, 0)
+        this.widget.url = 'http://ncov.mohw.go.kr'
 
         if (options && options.size) {
             let sizes = options.size.split['|']
@@ -70,8 +69,40 @@ class CovidStat {
     }
 
     async init () {
-        this.covid = await _loadData()
-        _init.bind(this)()
+        let covid = await _loadData()
+        this.widget.backgroundColor = new Color(_getLevelColor(covid.count))
+        this.widget.refreshAfterDate = new Date(Date.now() + 1000 * this.oprions.refreshAfterSeconds)
+
+        let titleRow = this.widget.addStack()    
+        let titleStack = titleRow.addStack()
+        titleStack.layoutHorizontally()
+        titleStack.centerAlignContent()
+        
+        titleStack.addSpacer()
+        
+        let imageIco = titleStack.addImage(await _getIcon('star-11-32'))
+        imageIco.imageSize = _getIconSize()
+        imageIco.centerAlignImage()
+        
+        titleStack.addSpacer(2)
+        
+        let titleTxt = titleStack.addText('코로나-19')
+        titleTxt.centerAlignText()
+        titleTxt.textColor = Color.white()
+        titleTxt.font = Font.boldRoundedSystemFont(_getTitleSize())
+        
+        titleStack.addSpacer()
+        
+        let countTxt = this.widget.addText(count.toString())
+        countTxt.url = source
+        countTxt.centerAlignText()
+        countTxt.textColor = Color.white()
+        countTxt.font = Font.thinSystemFont(_getCountSize(count))
+        
+        let dateTxt = this.widget.addText(date)
+        dateTxt.centerAlignText()
+        dateTxt.textColor = Color.white()
+        dateTxt.font = Font.thinSystemFont(15)
     }
 
     present () {
