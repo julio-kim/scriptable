@@ -1,5 +1,3 @@
-const moduler = require("../moduler")
-
 const _getIconSize = () => Device.isPhone() ? new Size(12, 12) : new Size(16, 16)
 
 const _getTitleSize = () => Device.isPhone() ? 17 : 20
