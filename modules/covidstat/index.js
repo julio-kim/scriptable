@@ -21,6 +21,16 @@ const _loadData = async () => {
 
 const _getIconSize = () => Device.isPhone() ? new Size(12, 12) : new Size(16, 16)
 
+const _getTitleSize = () => Device.isPhone() ? 17 : 20
+
+const _getCountSize = (count) => {
+    if (count >= 1000) {
+        return Device.isPhone() ? 45 : 55
+    } else {
+        return Device.isPhone() ? 55 : 70    
+    }
+}
+
 const _getLevelColor = (count) => {
     if (count >= 500) return '#222831'
     else if (count < 500 && count >= 300) return '#dc143c'
