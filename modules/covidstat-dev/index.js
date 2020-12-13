@@ -19,7 +19,8 @@ const _loadData = async () => {
 
     return {
         count: parseInt(covid.count.domestic) + parseInt(covid.count.overseas),
-        date: covid.date.replace(/\(|\)/g, '').split(',')[0]
+        date: covid.date.replace(/\(|\)/g, '').split(',')[0],
+        weekly: covid.wpsData.confirm_day
     }
 }
 
@@ -45,7 +46,7 @@ class CovidStat extends CovidStatBase {
     async init () {
         let covid = await _loadData()
         await super.initBase('코로나-19', source, covid)
-        super.setBackgroundImage(_areaGraph(covid.wpsData.confirm_day))
+        super.setBackgroundImage(_areaGraph(covid.weekly))
     }
 }   
 
