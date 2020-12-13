@@ -71,7 +71,7 @@ class CovidStat {
     async init () {
         let covid = await _loadData()
         this.widget.backgroundColor = new Color(_getLevelColor(covid.count))
-        this.widget.refreshAfterDate = new Date(Date.now() + 1000 * this.oprions.refreshAfterSeconds)
+        this.widget.refreshAfterDate = new Date(Date.now() + 1000 * this.options.refreshAfterSeconds)
 
         let titleRow = this.widget.addStack()    
         let titleStack = titleRow.addStack()
