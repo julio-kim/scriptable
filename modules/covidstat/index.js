@@ -85,7 +85,7 @@ class CovidStat {
         this.widget.backgroundColor = new Color(_getLevelColor(covid.count))
         this.widget.refreshAfterDate = new Date(Date.now() + 1000 * this.options.refreshAfterSeconds)
 
-        let titleRow = this.widget.addStack()    
+        let titleRow = this.widget.addStack()
         let titleStack = titleRow.addStack()
         titleStack.layoutHorizontally()
         titleStack.centerAlignContent()

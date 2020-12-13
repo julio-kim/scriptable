@@ -57,6 +57,8 @@ const updateVersion = async (moduleName, isNew) => {
         let noti = new Notification()
         noti.title = `${curModule.name} 모듈이 업데이트 되었습니다.`
         noti.body = curModule.description
+        noti.sound = 'piano_success'
+        noti.openURL = 'https://julio-kim.github.io/scriptable'
         noti.schedule()    
     }
 }
