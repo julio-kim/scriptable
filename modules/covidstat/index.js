@@ -36,6 +36,14 @@ class CovidStat {
 
         }, options)
 
+
+        // let covid = await _loadData()
+        // console.log(covid)
+
+        //_init.bind(this)()
+    }
+
+    async init () {
         const source = 'http://ncov.mohw.go.kr'
         let webView = new WebView()
         await webView.loadURL(source)
@@ -56,11 +64,6 @@ class CovidStat {
 
         console.log('count: ' + count)
         console.log('date: ' + date)
-
-        // let covid = await _loadData()
-        // console.log(covid)
-
-        //_init.bind(this)()
     }
 
     present () {
