@@ -2,7 +2,15 @@
     "name": "scriptable-moduler",
     "version": "1.0.0",
     "modules": [{
+        "name": "covidstatbase",
+        "version": "1.0.0",
+        "description": "✽ Covid Stat Base Initial commit..."
+    }, {
         "name": "covidstat",
+        "version": "1.0.0",
+        "description": "✽ Covid Stat Initial commit..."
+    }, {
+        "name": "covidstat-dev",
         "version": "1.0.0",
         "description": "✽ Covid Stat Initial commit..."
     }, {
