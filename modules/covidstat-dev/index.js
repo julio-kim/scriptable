@@ -33,7 +33,7 @@ const _getLevelColor = (count) => {
     else return '#007acc' // 0099ff
 }
 
-const _areaGraph = (covid) => {
+const _areaGraph = (covid, options) => {
     let size = new Size(200, 200) 
     if (config.widgetFamily == 'medium') {    
         size = new Size(400, 200)
@@ -48,7 +48,7 @@ const _areaGraph = (covid) => {
         minValue: 0,
         maxValue: (maxValue > 500) ? maxValue + 50 : 500,
         fillColor: _getLevelColor(covid.count),
-        fillOpaque: this._options.fillOpaque
+        fillOpaque: options.fillOpaque
     })
     chart.render(covid.weekly)
     return chart.toImage()
@@ -72,7 +72,7 @@ class CovidStat extends CovidStatBase {
         }
         await super.initBase('코로나-19', source, covid)
         if (this._options.weeklyChart) {
-            super.setBackgroundImage(_areaGraph(covid))
+            super.setBackgroundImage(_areaGraph(covid, this._options))
         }
     }
 }   
