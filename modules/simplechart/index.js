@@ -44,7 +44,8 @@ class SimpleAreaChart {
             minValue: undefined,
             maxValue: undefined,
             opaque: false,
-            fillColor: '#880000'
+            fillColor: '#880000',
+            fillOpaque: undefined
         }, options)
 
         if (!this.options.width || !this.options.height) {
@@ -54,7 +55,7 @@ class SimpleAreaChart {
         }
     
         this.ctx.opaque = this.options.opaque;
-        this.ctx.setFillColor(new Color(this.options.fillColor));
+        this.ctx.setFillColor(new Color(this.options.fillColor, this.options.fillOpaque));
     }
     
     render (series) {

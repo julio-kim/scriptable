@@ -47,7 +47,8 @@ const _areaGraph = (covid) => {
         height: size.height,
         minValue: 0,
         maxValue: (maxValue > 500) ? maxValue + 50 : 500,
-        fillColor: _getLevelColor(covid.count)
+        fillColor: _getLevelColor(covid.count),
+        fillOpaque: .5
     })
     chart.render(covid.weekly)
     return chart.toImage()
