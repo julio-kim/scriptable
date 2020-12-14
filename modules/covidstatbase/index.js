@@ -41,9 +41,7 @@ class CovidStatBase {
         this.options = Object.assign({
             refreshAfterSeconds: 30,
             titleSize: Device.isPhone() ? 17 : 20,
-            countSize: (count >= 1000) ?
-                (Device.isPhone() ? 45 : 55) :
-                (Device.isPhone() ? 55 : 70),
+            countSize: undefined,
             dateSize: Device.isPhone() ? 11 : 14,
         }, options)
     }
@@ -52,6 +50,12 @@ class CovidStatBase {
         this.widget.url = source
         this.widget.backgroundColor = new Color(_getLevelColor(covid.count))
         this.widget.refreshAfterDate = new Date(Date.now() + 1000 * this.options.refreshAfterSeconds)
+
+        if (this.options.countSize === undefined) {
+            this.options.countSize = (count >= 1000) ?
+                (Device.isPhone() ? 45 : 55) :
+                (Device.isPhone() ? 55 : 70)
+        }
 
         let titleRow = this.widget.addStack()
         let titleStack = titleRow.addStack()
