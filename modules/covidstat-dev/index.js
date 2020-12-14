@@ -1,4 +1,5 @@
 const CovidStatBase = importModule('/modules/covidstatbase')
+const { SimpleAreaChart } = importModule('/modules/simplechart')
 
 const source = 'http://ncov.mohw.go.kr'
 
