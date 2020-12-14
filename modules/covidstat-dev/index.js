@@ -27,7 +27,7 @@ const _loadData = async () => {
 
 const _getLevelColor = (count) => {
     // https://color-hex.com
-    if (count >= 500) return '#14181d' // #222831
+    if (count >= 500) return '#1b2027' // #222831
     else if (count < 500 && count >= 300) return '#b01030' // dc143c
     else if (count < 300 && count >= 100) return '#c04343' // f05454
     else return '#007acc' // 0099ff
