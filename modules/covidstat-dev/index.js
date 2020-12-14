@@ -56,7 +56,7 @@ class CovidStat extends CovidStatBase {
         super(options)
 
         this._options = Object.assign({
-            weeklyChart: true
+            weeklyChart: false
         }, options)
     }
 
