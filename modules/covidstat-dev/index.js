@@ -52,10 +52,20 @@ const _areaGraph = (covid) => {
 }
 
 class CovidStat extends CovidStatBase {
+    constructor (options) {
+        super(options)
+
+        this._options = Object.assign({
+            weeklyChart: true
+        }, options)
+    }
+
     async init () {
         let covid = await _loadData()
         await super.initBase('코로나-19', source, covid)
-        super.setBackgroundImage(_areaGraph(covid))
+        if (this._options.weeklyChart) {
+            super.setBackgroundImage(_areaGraph(covid))
+        }
     }
 }   
 
