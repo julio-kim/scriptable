@@ -3,24 +3,24 @@
     "version": "1.0.0",
     "modules": [{
         "name": "covidstatbase",
-        "version": "1.0.0",
-        "description": "✽ Covid Stat Base Initial commit..."
+        "version": "1.1.0",
+        "description": "✽ 클래스 구조를 효율적으로 개선하였습니다."
     }, {
         "name": "covidstat",
-        "version": "1.0.0",
-        "description": "✽ Covid Stat Initial commit..."
+        "version": "1.1.0",
+        "description": "✽ 클래스 구조를 효율적으로 개선하였습니다.\n✽ 코로나 주간 현황이 그래프로 표기됩니다."
     }, {
         "name": "covidstat-dev",
         "version": "1.1.0",
         "description": "✽ 코로나 주간 현황이 그래프로 표기됩니다."
     }, {
         "name": "covidstatlive",
-        "version": "1.0.0",
-        "description": "✽ Covid Stat Live Initial commit..."
+        "version": "1.1.0",
+        "description": "✽ 클래스 구조를 효율적으로 개선하였습니다."
     }, {
         "name": "covidstatlive-dev",
-        "version": "1.0.0",
-        "description": "✽ Covid Stat Live Initial commit..."
+        "version": "1.1.0",
+        "description": "✽ 클래스 구조를 효율적으로 개선하였습니다."
     }, {
         "name": "simplechart",
         "version": "1.0.0",
