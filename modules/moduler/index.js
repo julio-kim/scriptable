@@ -170,7 +170,7 @@ module.exports = {
         return getVersions().modules
     },
     uninstall: (moduleName) => {
-        await uninstall(moduleName)
+        uninstall(moduleName)
     },
     hello: () => {
         let noti = new Notification()
