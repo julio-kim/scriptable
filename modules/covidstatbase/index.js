@@ -1,15 +1,5 @@
 const _getIconSize = () => Device.isPhone() ? new Size(12, 12) : new Size(16, 16)
 
-const _getTitleSize = () => Device.isPhone() ? 17 : 20
-
-const _getCountSize = (count) => {
-    if (count >= 1000) {
-        return Device.isPhone() ? 45 : 55
-    } else {
-        return Device.isPhone() ? 55 : 70    
-    }
-}
-
 const _getLevelColor = (count) => {
     if (count >= 500) return '#222831'
     else if (count < 500 && count >= 300) return '#dc143c'
@@ -50,9 +40,11 @@ class CovidStatBase {
 
         this.options = Object.assign({
             refreshAfterSeconds: 30,
-            titleSize: '17:20',
-            countSize: '55:70',
-            dateSize: '15:15'
+            titleSize: Device.isPhone() ? 17 : 20,
+            countSize: (count >= 1000) ?
+                (Device.isPhone() ? 45 : 55) :
+                (Device.isPhone() ? 55 : 70),
+            dateSize: Device.isPhone() ? 11 : 14,
         }, options)
     }
 
@@ -77,19 +69,19 @@ class CovidStatBase {
         let titleTxt = titleStack.addText(title)
         titleTxt.centerAlignText()
         titleTxt.textColor = Color.white()
-        titleTxt.font = Font.boldRoundedSystemFont(_getTitleSize())
+        titleTxt.font = Font.boldRoundedSystemFont(this.options.titleSize)
         
         titleStack.addSpacer()
         
         let countTxt = this.widget.addText(covid.count.toLocaleString())
         countTxt.centerAlignText()
         countTxt.textColor = Color.white()
-        countTxt.font = Font.thinSystemFont(_getCountSize(covid.count))
+        countTxt.font = Font.thinSystemFont(this.options.countSize)
         
         let dateTxt = this.widget.addText(covid.date)
         dateTxt.centerAlignText()
         dateTxt.textColor = Color.white()
-        dateTxt.font = Font.thinSystemFont(15)
+        dateTxt.font = Font.thinSystemFont(this.options.dateSize)
     }
 
     setBackgroundImage (image) {
