@@ -130,4 +130,11 @@ module.exports = {
     uninstall: (moduleName) => {
 
     },
+    hello: () => {
+        let noti = new Notification()
+        noti.title = 'Scriptable Moduler'
+        noti.body = '✽ Moduler가 정상적으로 설치되었습니다!!'
+        noti.sound = 'complete'
+        noti.schedule()
+    }
 }
