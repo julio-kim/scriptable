@@ -1,3 +1,7 @@
+const getFileManager = () => {
+    return FileManager.local()
+}
+
 const getModuleVersion = async (moduleName) => {
     console.log(`call getModuleVersion, ${moduleName}`)
     let request = new Request(`https://julio-kim.github.io/scriptable/version.json`)
@@ -19,7 +23,7 @@ const checkUpdate = async (moduleName, version) => {
 
 const installedVersion = (moduleName) => {
     console.log(`call installedVersion ${moduleName}`)
-    let fm = FileManager.iCloud()
+    let fm = getFileManager()
     let dir = fm.documentsDirectory()
     let baseDir = `${dir}/modules`
 
@@ -34,7 +38,7 @@ const installedVersion = (moduleName) => {
 
 const updateVersion = async (moduleName, isNew) => {
     console.log(`call updateVersion ${moduleName}`)
-    let fm = FileManager.iCloud()
+    let fm = getFileManager()
     let dir = fm.documentsDirectory()
     let baseDir = `${dir}/modules`
     let curModule = await getModuleVersion(moduleName)
@@ -65,7 +69,7 @@ const updateVersion = async (moduleName, isNew) => {
 
 const installModule = async (moduleName) => {
     console.log(`call installModule ${moduleName}`)
-    let fm = FileManager.iCloud()
+    let fm = getFileManager()
     let dir = fm.documentsDirectory()
     const baseDir = `${dir}/modules`
 
@@ -81,7 +85,7 @@ const updateModule = async (moduleName) => {
 
 const writeModule = async (moduleName, isNew) => {
     console.log(`call writeModule ${moduleName}`)
-    let fm = FileManager.iCloud()
+    let fm = getFileManager()
     let dir = fm.documentsDirectory()
     const baseDir = `${dir}/modules`
 
@@ -94,7 +98,7 @@ const writeModule = async (moduleName, isNew) => {
 
 const install = async (moduleName) => {
     console.log(`call install ${moduleName}`)
-    let fm = FileManager.iCloud()
+    let fm = getFileManager()
     let dir = fm.documentsDirectory()
     const baseDir = `${dir}/modules`
 
