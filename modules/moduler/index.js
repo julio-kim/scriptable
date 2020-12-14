@@ -36,6 +36,18 @@ const installedVersion = (moduleName) => {
     }
 }
 
+const getVersions = () => {
+    let fm = getFileManager()
+    let dir = fm.documentsDirectory()
+    let baseDir = `${dir}/modules`
+
+    let versions = { "modules": [] }
+    if (fm.fileExists(`${baseDir}/version.json`)) {
+        versions = JSON.parse(fm.readString(`${baseDir}/version.json`))
+    }
+    return versions
+}
+
 const updateVersion = async (moduleName, isNew) => {
     console.log(`call updateVersion ${moduleName}`)
     let fm = getFileManager()
@@ -43,10 +55,7 @@ const updateVersion = async (moduleName, isNew) => {
     let baseDir = `${dir}/modules`
     let curModule = await getModuleVersion(moduleName)
 
-    let versions = { "modules": [] }
-    if (fm.fileExists(`${baseDir}/version.json`)) {
-        versions = JSON.parse(fm.readString(`${baseDir}/version.json`))
-    }
+    let versions = getVersions()
     const index = versions.modules.findIndex(item => item.name === curModule.name)
     if (index >= 0) {
         versions.modules = [
@@ -125,7 +134,7 @@ module.exports = {
        return install(moduleName) 
     },
     list: () => {
-
+        return getVersions().modules
     },
     uninstall: (moduleName) => {
 
