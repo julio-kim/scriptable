@@ -1,5 +1,5 @@
 const getFileManager = () => {
-    return FileManager.local()
+    return FileManager.iCloud()
 }
 
 const getModuleVersion = async (moduleName) => {
