@@ -52,7 +52,7 @@ class CovidStatBase {
         this.widget.refreshAfterDate = new Date(Date.now() + 1000 * this.options.refreshAfterSeconds)
 
         if (this.options.countSize === undefined) {
-            this.options.countSize = (count >= 1000) ?
+            this.options.countSize = (covid.count >= 1000) ?
                 (Device.isPhone() ? 45 : 55) :
                 (Device.isPhone() ? 55 : 70)
         }
