@@ -75,6 +75,11 @@ class CovidStat extends CovidStatBase {
             super.setBackgroundImage(_areaGraph(covid, this._options))
         }
     }
+
+    async present () {
+        await this.init()
+        super.present()
+    }
 }   
 
 module.exports = CovidStat

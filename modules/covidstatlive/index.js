@@ -29,6 +29,11 @@ class CovidStatLive extends CovidStatBase {
         let covid = await _loadData()
         await super.initBase('코로나LIVE', source, covid)
     }
+
+    async present () {
+        await this.init()
+        super.present()
+    }
 }
 
 module.exports = CovidStatLive
