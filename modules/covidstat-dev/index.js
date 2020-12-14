@@ -25,7 +25,15 @@ const _loadData = async () => {
     }
 }
 
-const _areaGraph = (series) => {
+const _getLevelColor = (count) => {
+    // https://color-hex.com
+    if (count >= 500) return '#14181d' // #222831
+    else if (count < 500 && count >= 300) return '#b01030' // dc143c
+    else if (count < 300 && count >= 100) return '#c04343' // f05454
+    else return '#007acc' // 0099ff
+}
+
+const _areaGraph = (covid) => {
     let size = new Size(200, 200) 
     if (config.widgetFamily == 'medium') {    
         size = new Size(400, 200)
@@ -37,9 +45,9 @@ const _areaGraph = (series) => {
         width: size.width,
         height: size.height,
         minValue: 0,
-        fillColor: '#ff0000'
+        fillColor: _getLevelColor(covid.count)
     })
-    chart.render(series)
+    chart.render(covid.weekly)
     return chart.toImage()
 }
 
