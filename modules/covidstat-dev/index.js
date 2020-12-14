@@ -60,7 +60,7 @@ class CovidStat extends CovidStatBase {
 
         this._options = Object.assign({
             weeklyChart: false,
-            fillOpaque: .5,
+            fillOpaque: .6,
             fakeCount: undefined,
         }, options)
     }
