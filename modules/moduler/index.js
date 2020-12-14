@@ -76,6 +76,22 @@ const updateVersion = async (moduleName, isNew) => {
     }
 }
 
+const deleteVersion = (moduleName) => {
+    let fm = getFileManager()
+    let dir = fm.documentsDirectory()
+    let baseDir = `${dir}/modules`
+
+    let versions = getVersions()
+    const index = versions.modules.findIndex(item => item.name === moduleName)
+    if (index >= 0) {
+        versions.modules = [
+            ...versions.modules.slice(0, index),
+            ...versions.modules.slice(index + 1)
+        ]
+    }
+    fm.writeString(`${baseDir}/version.json`, JSON.stringify(versions))
+}
+
 const installModule = async (moduleName) => {
     console.log(`call installModule ${moduleName}`)
     let fm = getFileManager()
@@ -129,6 +145,23 @@ const install = async (moduleName) => {
     return importModule(targetModule)
 }
 
+const uninstall = async (moduleName) => {
+    let fm = getFileManager()
+    let dir = fm.documentsDirectory()
+    const baseDir = `${dir}/modules`
+
+    if (!fm.isDirectory(baseDir)) {
+        fm.createDirectory(baseDir)
+    }
+
+    if (fm.fileExists(`${baseDir}/${moduleName}/index.js`)) {
+        fm.remove(`${baseDir}/${moduleName}`)
+        deleteVersion(moduleName)
+    } else {
+        throw new Error(`Module not found: ${moduleName}`)
+    }
+}
+
 module.exports = {
     install: (moduleName) => {
        return install(moduleName) 
@@ -137,7 +170,7 @@ module.exports = {
         return getVersions().modules
     },
     uninstall: (moduleName) => {
-
+        await uninstall(moduleName)
     },
     hello: () => {
         let noti = new Notification()
