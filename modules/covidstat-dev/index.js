@@ -58,12 +58,16 @@ class CovidStat extends CovidStatBase {
         super(options)
 
         this._options = Object.assign({
-            weeklyChart: false
+            weeklyChart: false,
+            fakeCount: undefined,
         }, options)
     }
 
     async init () {
         let covid = await _loadData()
+        if (this._options.fakeCount) {
+            covid.count = this._options.fakeCount
+        }
         await super.initBase('코로나-19', source, covid)
         if (this._options.weeklyChart) {
             super.setBackgroundImage(_areaGraph(covid))
