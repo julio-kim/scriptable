@@ -8,7 +8,7 @@ class ArtveeArtist extends ArtveeBase {
     }
 
     async present() {
-        let store = new DocumentStore(`artvee-artist/${this.artist}`)
+        let store = new DocumentStore(`artvee-artist-${this.artist}`)
         if (store.size() == 0) {
             let arts = await super.loadArts(this.artist)
             arts.forEach(art => store.save(art.id, art))
