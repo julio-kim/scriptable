@@ -26,6 +26,22 @@
         "version": "1.0.0",
         "description": "✽ Simple Chart Initial commit..."
     }, {
+        "name": "storebase",
+        "version": "1.0.0",
+        "description": "✽ Store Base Initial commit..."
+    }, {
+        "name": "storedoc",
+        "version": "1.0.0",
+        "description": "✽ Store Doc Initial commit..."
+    }, {
+        "name": "storecache",
+        "version": "1.0.0",
+        "description": "✽ Store Cache Initial commit..."
+    }, {
+        "name": "storetemp",
+        "version": "1.0.0",
+        "description": "✽ Store Temp Initial commit..."
+    }, {
         "name": "hello",
         "version": "1.0.10",
         "description": "✽ ext module 테스트 중..."
