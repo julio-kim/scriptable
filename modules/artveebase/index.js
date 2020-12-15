@@ -57,7 +57,7 @@ class ArtveeBase {
         if (this.options.debug) {
             let txt = this.widget.addText(`${todayIdx + 1} / ${arts.length}`)
             txt.rightAlignText()
-            txt.color = Color.black()
+            txt.textColor = Color.black()
             txt.font = Font.ultraLightMonospacedSystemFont(10)    
         }
 
@@ -67,11 +67,13 @@ class ArtveeBase {
             let titleTxt = this.widget.addText(
                 (this.options.title) ? this.options.title : todayArt.title
             )
+            titleTxt.textColor = Color.white()
             titleTxt.font = Font.boldRoundedSystemFont(20)
         
             let authorTxt = this.widget.addText(
                 (this.options.subTitle) ? this.options.subTitle : todayArt.artist.info
             )
+            authorTxt.textColor = Color.white()
             authorTxt.font = Font.lightSystemFont(15)    
         }
     
