@@ -57,7 +57,7 @@ class ArtveeBase {
         if (this.options.debug) {
             let txt = this.widget.addText(`${todayIdx + 1} / ${arts.length}`)
             txt.rightAlignText()
-            txt.color = Color.white()
+            txt.color = Color.black()
             txt.font = Font.ultraLightMonospacedSystemFont(10)    
         }
 
