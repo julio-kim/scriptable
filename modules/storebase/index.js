@@ -1,12 +1,12 @@
 const getStoreFilePath = (path, storeName) => {
     const fm = FileManager.local()
-    const baseDir = `${path}/store/`
+    const baseDir = `${path}/store`
 
     if (!fm.isDirectory(baseDir)) {
         fm.createDirectory(baseDir)
     }
 
-    let storePath = `${baseDir}/store/${storeName}.js`
+    let storePath = `${baseDir}/${storeName}.js`
     console.log(`determined store path: ${storePath}`)
     return storePath
 }
