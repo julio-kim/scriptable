@@ -10,6 +10,7 @@ const getStoreFilePath = (path, storeName) => {
 }
 
 const init = (path, storeName, options) => {
+    const fm = FileManager.local()
     const storeFile = getStoreFilePath(path, storeName)
     if (fm.fileExists(storeFile)) {
         return JSON.parse(fm.readString(storeFile))
