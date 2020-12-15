@@ -1,16 +1,16 @@
 # Scriptable Modules
 
-Scriptable Modules 프로젝트는 [iOS Scriptable App](https://scriptable.app)에서 동작시킬 App들을 Module기반으로 작성하여 손쉽게 사용할 수 있도록 제공합니다.
+**Scriptable Modules 프로젝트**는 [iOS Scriptable App](https://scriptable.app)에서 동작시킬 App들을 **Module기반**으로 작성하여 손쉽게 사용할 수 있도록 제공합니다.
 
 재사용 가능한 다양한 공통 코드들을 작성하고, 그 기반 위에서 다양한 Scriptable App들을 소개해 볼 예정입니다.
 
 많은 관심 부탁드립니다~:)
 
-### 주요기능
+#### 주요기능
 
-* [x] 반복적으로 사용되는 코드를 `module 기반`으로 작성하여 `재사용성`을 높이고 효율적인 개발이 가능하도록 지원
-* [x] Moduler를 통해 설치된 모듈들의 `버전을 관리`하여 기능 개선 버전이 배포되었을 때 `자동 업데이트 지원`
-* [x] 미려한 디자인의 다양한 Scriptable App 배포 예정~:)
+* 반복적으로 사용되는 코드를 **module 기반**으로 작성하여 **재사용성**을 높이고 효율적인 개발이 가능하도록 지원
+* Moduler를 통해 설치된 모듈들의 **버전을 관리**하여 기능 개선 버전이 배포되었을 때 **자동 업데이트 지원**
+* 미려한 디자인의 다양한 Scriptable App 배포 예정~:)
 
 ## 목차
 * [I. 시작하기](#i-시작하기)
