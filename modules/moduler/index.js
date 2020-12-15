@@ -6,7 +6,6 @@ const getModuleVersion = async (moduleName) => {
     console.log(`call getModuleVersion, ${moduleName}`)
     let request = new Request(`https://julio-kim.github.io/scriptable/version.json`)
     let moduler = await request.loadJSON()
-    console.log(JSON.stringify(moduler, null, 4))
     return moduler.modules.filter(module => module.name === moduleName)[0]
 }
 
@@ -141,7 +140,6 @@ const install = async (moduleName) => {
     }
     let targetModule = `/modules/${moduleName}`
     console.log(`targetModule: ${targetModule}`)
-    console.log(`importModule: ${importModule}`)
     return importModule(targetModule)
 }
 
