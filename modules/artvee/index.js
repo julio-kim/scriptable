@@ -1,6 +1,7 @@
+const ArtveeBase = importModule('/modules/artveebase')
 const { DocumentStore, TemporaryStore } = importModule('/modules/store')
 
-class ArtveeArtist {
+class ArtveeArtist extends ArtveeBase {
     constructor (artist, options) {
         super(options)
         this.artist = artist
@@ -19,7 +20,7 @@ class ArtveeArtist {
     }
 }
 
-class ArtveeDaily {
+class ArtveeDaily extends ArtveeBase {
     constructor (options) {
         super(options)
     }
