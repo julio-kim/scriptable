@@ -3,6 +3,8 @@ class ArtveeBase {
         this.options = Object.assign({
             debug: false,
             enableArtInfo: true,
+            title: undefined,
+            subTitle: undefined,
             refreshAfterSeconds: 60 * 10, // 10 Minutes
         }, options)
     }
@@ -61,11 +63,17 @@ class ArtveeBase {
 
         this.widget.addSpacer()
     
-        let titleTxt = this.widget.addText(todayArt.title)
-        titleTxt.font = Font.boldRoundedSystemFont(20)
-    
-        let authorTxt = this.widget.addText(todayArt.artist.info)
-        authorTxt.font = Font.lightSystemFont(15)
+        if (this.options.enableArtInfo) {
+            let titleTxt = this.widget.addText(
+                (this.options.title) ? this.options.title : todayArt.title
+            )
+            titleTxt.font = Font.boldRoundedSystemFont(20)
+        
+            let authorTxt = this.widget.addText(
+                (this.options.subTitle) ? this.options.subTitle : todayArt.artist.info
+            )
+            authorTxt.font = Font.lightSystemFont(15)    
+        }
     
         this.widget.backgroundImage = await new Request(todayArt.image.link).loadImage()
     }
