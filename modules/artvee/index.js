@@ -11,7 +11,7 @@ class ArtveeArtist extends ArtveeBase {
         let store = new DocumentStore(`artvee-artist`)
         if (store.size() == 0) {
             let arts = await super.loadArts(this.artist)
-            console.log(arts)
+            console.log('arts :' + arts)
             arts.forEach(art => store.save(art.id, art))
             store.saveSync()
         }
