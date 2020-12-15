@@ -6,7 +6,9 @@ const getStoreFilePath = (path, storeName) => {
         fm.createDirectory(baseDir)
     }
 
-    return `${baseDir}/store/${storeName}.js`
+    let storePath = `${baseDir}/store/${storeName}.js`
+    console.log(`determined store path: ${storePath}`)
+    return storePath
 }
 
 const init = (path, storeName, options) => {
