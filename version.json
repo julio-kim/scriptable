@@ -22,6 +22,14 @@
         "version": "1.1.0",
         "description": "✽ 클래스 구조를 효율적으로 개선하였습니다."
     }, {
+        "name": "artveebase",
+        "version": "1.0.0",
+        "description": "✽ Artvee Base Initial commit..."
+    }, {
+        "name": "artvee",
+        "version": "1.0.0",
+        "description": "✽ Artvee Initial commit..."
+    }, {
         "name": "simplechart",
         "version": "1.0.0",
         "description": "✽ Simple Chart Initial commit..."

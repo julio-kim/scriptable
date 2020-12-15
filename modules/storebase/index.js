@@ -60,6 +60,10 @@ class StoreBase {
     delete (id) {
         delete this.store[id]
     }
+
+    size () {
+        return Object.keys(this.store).length
+    }
 }
 
 module.exports = StoreBase
