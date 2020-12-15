@@ -1,8 +1,8 @@
 const StoreBase = importModule('/modules/storebase')
 
 class CacheStore extends StoreBase {
-    constructor (storeName) {
-        super(FileManager.local().cacheDirectory(), storeName)
+    constructor (storeName, options) {
+        super(FileManager.local().cacheDirectory(), storeName, options)
     }
 }
 
