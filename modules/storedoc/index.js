@@ -6,4 +6,20 @@ class DocumentStore extends StoreBase {
     }
 }
 
-module.exports = DocumentStore
+class CacheStore extends StoreBase {
+    constructor (storeName, options) {
+        super(FileManager.local().cacheDirectory(), storeName, options)
+    }
+}
+
+class TemporaryStore extends StoreBase {
+    constructor (storeName, options) {
+        super(FileManager.local().temporaryDirectory(), storeName, options)
+    }
+}
+
+module.exports = {
+    DocumentStore,
+    CacheStore,
+    TemporaryStore,
+}
