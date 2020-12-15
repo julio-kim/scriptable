@@ -10,6 +10,8 @@ class ArtveeBase {
         const baseUrl = 'https://artvee.com'
         const source = (artist) ? `${baseUrl}/artist/${artist}/?per_page=100` : baseUrl
 
+        console.log(source)
+
         let webView = new WebView()
         await webView.loadURL(source)
     
