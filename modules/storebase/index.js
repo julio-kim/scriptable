@@ -40,6 +40,7 @@ class StoreBase {
     }
 
     saveSync () {
+        const fm = FileManager.local()
         const storeFile = getStoreFilePath(this.path, this.storeName)
         fm.writeString(storeFile, (this.options.pretty) ?
             JSON.stringify(this.store, null, 4) : JSON.stringify(this.store)
