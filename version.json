@@ -30,17 +30,9 @@
         "version": "1.0.0",
         "description": "✽ Store Base Initial commit..."
     }, {
-        "name": "storedoc",
+        "name": "store",
         "version": "1.0.0",
-        "description": "✽ Store Doc Initial commit..."
-    }, {
-        "name": "storecache",
-        "version": "1.0.0",
-        "description": "✽ Store Cache Initial commit..."
-    }, {
-        "name": "storetemp",
-        "version": "1.0.0",
-        "description": "✽ Store Temp Initial commit..."
+        "description": "✽ Store Initial commit..."
     }, {
         "name": "hello",
         "version": "1.0.10",
