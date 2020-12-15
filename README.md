@@ -1,12 +1,12 @@
-## Scriptable Modules
+# Scriptable Modules
 
 You can use the [editor on GitHub](https://github.com/julio-kim/scriptable/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### I. 시작하기
+## I. 시작하기
 
-#### I-1. Module Installer 설치
+### I-1. Module Installer 설치
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
@@ -26,7 +26,7 @@ let moduleFile = await request.loadString()
 fm.writeString(`${baseDir}/index.js`, moduleFile)
 ```
 
-#### I-2. Hello World
+### I-2. Hello World
 
 ```javascript
 const { hello } = importModule('/modules/moduler')
@@ -34,7 +34,7 @@ const { hello } = importModule('/modules/moduler')
 hello()
 ```
 
-#### I-3. 설치된 Modules 삭제
+### I-3. 설치된 Modules 삭제
 
 ```javascript
 const { list, uninstall } = importModule('/modules/moduler')
@@ -42,15 +42,15 @@ const { list, uninstall } = importModule('/modules/moduler')
 list().map(ver => ver.name).forEach(ver => uninstall(ver))
 ```
 
-### II. Modules 소개
+## II. Modules 소개
 
-#### II-1. CovidStat
+### II-1. CovidStat
 
 | abc | defghi |
 :-: | :-----------
 bar | baz
 
-#### II-2. Artvee
+### II-2. Artvee
 
 
 ```markdown
@@ -72,11 +72,4 @@ Syntax highlighted code block
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/julio-kim/scriptable/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+.
