@@ -8,14 +8,8 @@ class ArtveeArtist extends ArtveeBase {
     }
 
     async present() {
-        let store = new DocumentStore(`artvee-artist-${this.artist}`)
-        if (store.size() == 0) {
-            let arts = await super.loadArts(this.artist)
-            arts.forEach(art => store.save(art.id, art))
-            store.saveSync()
-        }
-
-        await super.initBase(store.all())
+        await super.initBase(() => 
+            new DocumentStore(`artvee-artist-${this.artist}`), this.artist)
         super.present()
     }
 }
@@ -26,14 +20,7 @@ class ArtveeDaily extends ArtveeBase {
     }
 
     async present() {
-        let store = new TemporaryStore("artvee-daily")
-        if (store.size() == 0) {
-            let arts = await super.loadArts()
-            arts.forEach(art => store.save(art.id, art))
-            store.saveSync()
-        }
-
-        await super.initBase(store.all())
+        await super.initBase(() => new TemporaryStore("artvee-daily"))
         super.present()
     }
 }
