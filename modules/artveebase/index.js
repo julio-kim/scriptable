@@ -11,7 +11,7 @@ class ArtveeBase {
 
     async loadArts (artist) {
         const baseUrl = 'https://artvee.com'
-        const source = (artist) ? `${baseUrl}/artist/${artist}/?per_page=100` : baseUrl
+        const source = (artist) ? `${baseUrl}/artist/${artist}/?per_page=200` : baseUrl
 
         console.log(source)
 
