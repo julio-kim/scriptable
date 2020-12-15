@@ -8,6 +8,25 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
+```javascript
+let fm = FileManager.iCloud()
+let dir = fm.documentsDirectory()
+const baseDir = `${dir}/modules/moduler`
+
+if (!fm.isDirectory(baseDir)) {
+    fm.createDirectory(baseDir)
+}
+
+let request = new Request('https://julio-kim.github.io/scriptable/modules/moduler/index.js')
+let moduleFile = await request.loadString()
+fm.writeString(`${baseDir}/index.js`, moduleFile)
+
+importModule('/modules/moduler').hello()
+
+//const { list, uninstall } = importModule('/modules/moduler')
+//list().map(ver => ver.name).forEach(ver => uninstall(ver))
+```
+
 ```markdown
 Syntax highlighted code block
 
