@@ -44,6 +44,10 @@ list().map(ver => ver.name).forEach(ver => uninstall(ver))
 
 #### II-1. CovidStat
 
+| abc | defghi |
+:-: | :-----------
+bar | baz
+
 #### II-2. Artvee
 
 
