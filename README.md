@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Scriptable Modules
 
 You can use the [editor on GitHub](https://github.com/julio-kim/scriptable/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
@@ -22,9 +22,12 @@ let moduleFile = await request.loadString()
 fm.writeString(`${baseDir}/index.js`, moduleFile)
 
 importModule('/modules/moduler').hello()
+```
 
-//const { list, uninstall } = importModule('/modules/moduler')
-//list().map(ver => ver.name).forEach(ver => uninstall(ver))
+```javascript
+const { list, uninstall } = importModule('/modules/moduler')
+
+list().map(ver => ver.name).forEach(ver => uninstall(ver))
 ```
 
 ```markdown
