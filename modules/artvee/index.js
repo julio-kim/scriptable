@@ -28,8 +28,8 @@ class ArtveeDaily extends ArtveeBase {
     async present() {
         let store = new TemporaryStore("artvee-daily")
         if (store.size() == 0) {
-            await super.loadArts()
-                .forEach(art => store.save(art.id, art))
+            let arts = await super.loadArts()
+            arts.forEach(art => store.save(art.id, art))
             store.saveSync()
         }
 
