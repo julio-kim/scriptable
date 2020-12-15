@@ -1,8 +1,9 @@
 class ArtveeBase {
     constructor (options) {
         this.options = Object.assign({
+            debug: false,
             enableArtInfo: true,
-            refreshAfterSeconds: 30,
+            refreshAfterSeconds: 60 * 10, // 10 Minutes
         }, options)
     }
 
@@ -50,6 +51,14 @@ class ArtveeBase {
         this.widget = new ListWidget()
         this.widget.refreshAfterDate = new Date(Date.now() + 1000 * this.options.refreshAfterSeconds)
         this.widget.url = todayArt.link
+
+        if (this.options.debug) {
+            let txt = this.widget.addText(`${todayIdx + 1} / ${arts.length}`)
+            txt.rightAlignText()
+            txt.color = Color.white()
+            txt.font = Font.ultraLightMonospacedSystemFont(10)    
+        }
+
         this.widget.addSpacer()
     
         let titleTxt = this.widget.addText(todayArt.title)
