@@ -1,4 +1,4 @@
-const CovidStatBase = importModule('/modules/covidstatbase')
+const CovidStatBase = importModule('/modules/covidbase')
 const { SimpleAreaChart } = importModule('/modules/simplechart')
 
 const _loadData = async (url) => {

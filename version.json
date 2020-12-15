@@ -2,15 +2,15 @@
     "name": "scriptable-moduler",
     "version": "1.0.0",
     "modules": [{
-        "name": "covidstatbase",
+        "name": "covidbase",
         "version": "1.1.0",
         "description": "✽ 클래스 구조를 효율적으로 개선하였습니다."
     }, {
-        "name": "covidstat",
+        "name": "covid",
         "version": "1.1.0",
         "description": "✽ 클래스 구조를 효율적으로 개선하였습니다.\n✽ 코로나 주간 현황이 그래프로 표기됩니다."
     }, {
-        "name": "covidstat-dev",
+        "name": "covid-dev",
         "version": "1.1.0",
         "description": "✽ 코로나 주간 현황이 그래프로 표기됩니다."
     }, {
