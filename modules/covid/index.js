@@ -83,7 +83,7 @@ class CovidStat extends CovidStatBase {
 
 const _loadLiveData = async (url) => {
     let webView = new WebView()
-    await webView.loadURL(source)
+    await webView.loadURL(url)
 
     let covid = await webView.evaluateJavaScript(`
         setTimeout(() => {
