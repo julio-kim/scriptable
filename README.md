@@ -4,7 +4,9 @@ You can use the [editor on GitHub](https://github.com/julio-kim/scriptable/edit/
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### I. 시작하기
+
+#### I-1. Module Installer 설치
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
@@ -20,15 +22,30 @@ if (!fm.isDirectory(baseDir)) {
 let request = new Request('https://julio-kim.github.io/scriptable/modules/moduler/index.js')
 let moduleFile = await request.loadString()
 fm.writeString(`${baseDir}/index.js`, moduleFile)
-
-importModule('/modules/moduler').hello()
 ```
+
+#### I-2. Hello World
+
+```javascript
+const { hello } = importModule('/modules/moduler')
+
+hello()
+```
+
+#### I-3. 설치된 Modules 삭제
 
 ```javascript
 const { list, uninstall } = importModule('/modules/moduler')
 
 list().map(ver => ver.name).forEach(ver => uninstall(ver))
 ```
+
+### II. Modules 소개
+
+#### II-1. CovidStat
+
+#### II-2. Artvee
+
 
 ```markdown
 Syntax highlighted code block
