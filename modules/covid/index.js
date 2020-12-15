@@ -1,11 +1,9 @@
 const CovidStatBase = importModule('/modules/covidstatbase')
 const { SimpleAreaChart } = importModule('/modules/simplechart')
 
-const source = 'http://ncov.mohw.go.kr'
-
-const _loadData = async () => {
+const _loadData = async (url) => {
     let webView = new WebView()
-    await webView.loadURL(source)
+    await webView.loadURL(url)
 
     let covid = await webView.evaluateJavaScript(`
         const baseSelector = 'div.mainlive_container div.liveboard_layout '
@@ -66,11 +64,12 @@ class CovidStat extends CovidStatBase {
     }
 
     async init () {
-        let covid = await _loadData()
+        const url = 'http://ncov.mohw.go.kr'
+        let covid = await _loadData(url)
         if (this._options.fakeCount) {
             covid.count = this._options.fakeCount
         }
-        await super.initBase('코로나-19', source, covid)
+        await super.initBase('코로나-19', url, covid)
         if (this._options.weeklyChart) {
             super.setBackgroundImage(_areaGraph(covid, this._options))
         }
@@ -80,6 +79,44 @@ class CovidStat extends CovidStatBase {
         await this.init()
         super.present()
     }
-}   
+}
 
-module.exports = CovidStat
+const _loadLiveData = async (url) => {
+    let webView = new WebView()
+    await webView.loadURL(source)
+
+    let covid = await webView.evaluateJavaScript(`
+        setTimeout(() => {
+            let button = document.querySelector('#root-portal button')
+            if (button) button.click()
+            
+            let date = document.querySelector('#__next > div:nth-child(1) > div:nth-child(4) > div:nth-child(1)').innerText
+            let count = document.querySelector('#__next > div:nth-child(1) > div:nth-child(6) > div:nth-child(3) > div:nth-child(5) > strong').innerText.trim()
+            
+            completion({date, count})        
+        }, 2000)
+    `, true)
+
+    return {
+        count: parseInt(covid.count.replace(/명/g, '')),
+        date: covid.date
+    }
+}
+
+class CovidStatLive extends CovidStatBase {
+    async init () {
+        const url = 'http://corona-live.com'
+        let covid = await _loadLiveData(url)
+        await super.initBase('코로나LIVE', url, covid)
+    }
+
+    async present () {
+        await this.init()
+        super.present()
+    }
+}
+
+module.exports = {
+    CovidStat,
+    CovidStatLive,
+}

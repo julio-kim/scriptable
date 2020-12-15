@@ -1,8 +1,6 @@
 const CovidStatBase = importModule('/modules/covidstatbase')
 
-const source = 'http://corona-live.com'
-
-const _loadData = async () => {
+const _loadLiveData = async (url) => {
     let webView = new WebView()
     await webView.loadURL(source)
 
@@ -26,8 +24,9 @@ const _loadData = async () => {
 
 class CovidStatLive extends CovidStatBase {
     async init () {
-        let covid = await _loadData()
-        await super.initBase('코로나LIVE', source, covid)
+        const url = 'http://corona-live.com'
+        let covid = await _loadLiveData(url)
+        await super.initBase('코로나LIVE', url, covid)
     }
 
     async present () {
