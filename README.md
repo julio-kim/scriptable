@@ -75,7 +75,9 @@ bar | baz
 
 ### II-2. Artvee Widget
 
-> 12월 중에 공개 예정입니다~:)
+> 공개된 미술 작품(Public Domain Artwork)을 소개하는 사이트인 [Artvee](https://artvee.com)의 작품들을 위젯으로 감상할 수 있습니다.
+>
+> 12월 중, 공개 예정입니다~:)
 
 ## III. Feedback
 
