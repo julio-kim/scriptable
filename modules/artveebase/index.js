@@ -44,7 +44,15 @@ class ArtveeBase {
         `, true)
     }
 
-    async initBase (arts) {
+    async initBase (storeHandler, artist) {
+        let store = storeHandler()
+        let arts = []
+        if (store.size() == 0) {
+            arts = await super.loadArts(artist)
+            arts.forEach(art => store.save(art.id, art))
+            store.saveSync()
+        }
+
         console.log(JSON.stringify(arts, null, 4))
         
         let todayIdx = Math.floor(Math.random() * arts.length)

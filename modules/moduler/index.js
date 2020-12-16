@@ -2,6 +2,25 @@ const getFileManager = () => {
     return FileManager.iCloud()
 }
 
+const getRemoteVersions = async () => {
+    console.log(`call getModuleVersion, ${moduleName}`)
+    let request = new Request(`https://julio-kim.github.io/scriptable/version.json`)
+    return await request.loadJSON()
+}
+
+const checkTargetModules = (versions, baseModuleName) => {
+    let targetModules = new Set()
+    const findDependencies = (moduleName) => {
+        targetModules.add(moduleName)
+        console.log(moduleName + ' added')
+        versions.modules.find(ver => ver.name === moduleName)
+            .dependencies.forEach(depName => findDependencies(depName))
+    }
+    findDependencies(baseModuleName)
+    console.log('total dep: ' + targetModules)
+    return targetModules
+}
+
 const getModuleVersion = async (moduleName) => {
     console.log(`call getModuleVersion, ${moduleName}`)
     let request = new Request(`https://julio-kim.github.io/scriptable/version.json`)
@@ -163,6 +182,10 @@ const uninstall = async (moduleName) => {
 module.exports = {
     install: (moduleName) => {
        return install(moduleName) 
+    },
+    findDependencies: async (moduleName) => {
+        let versions = await getRemoteVersions()
+        return checkTargetModules(versions, moduleName)
     },
     list: () => {
         return getVersions().modules

@@ -4,54 +4,58 @@
     "modules": [{
         "name": "covidbase",
         "version": "1.1.0",
-        "description": "✽ 클래스 구조를 효율적으로 개선하였습니다."
+        "description": "✽ 클래스 구조를 효율적으로 개선하였습니다.",
+        "dependencies": []
     }, {
         "name": "covid",
         "version": "1.1.0",
-        "description": "✽ 클래스 구조를 효율적으로 개선하였습니다.\n✽ 코로나 주간 현황이 그래프로 표기됩니다."
+        "description": "✽ 클래스 구조를 효율적으로 개선하였습니다.\n✽ 코로나 주간 현황이 그래프로 표기됩니다.",
+        "dependencies": [
+            "covidbase", "simplechart"
+        ]
     }, {
         "name": "covid-dev",
         "version": "1.1.0",
-        "description": "✽ 코로나 주간 현황이 그래프로 표기됩니다."
-    }, {
-        "name": "covidstatlive",
-        "version": "1.1.0",
-        "description": "✽ 클래스 구조를 효율적으로 개선하였습니다."
-    }, {
-        "name": "covidstatlive-dev",
-        "version": "1.1.0",
-        "description": "✽ 클래스 구조를 효율적으로 개선하였습니다."
+        "description": "✽ 코로나 주간 현황이 그래프로 표기됩니다.",
+        "dependencies": [
+            "covidbase", "simplechart"
+        ]
     }, {
         "name": "artveebase",
         "version": "1.0.0",
-        "description": "✽ Artvee Base Initial commit..."
+        "description": "✽ Artvee Base Initial commit...",
+        "dependencies": []
     }, {
         "name": "artvee",
         "version": "1.0.0",
-        "description": "✽ Artvee Initial commit..."
+        "description": "✽ Artvee Initial commit...",
+        "dependencies": [
+            "artveebase", "store"
+        ]
     }, {
         "name": "simplechart",
         "version": "1.0.0",
-        "description": "✽ Simple Chart Initial commit..."
-    }, {
-        "name": "storebase",
-        "version": "1.0.0",
-        "description": "✽ Store Base Initial commit..."
+        "description": "✽ Simple Chart Initial commit...",
+        "dependencies": []
     }, {
         "name": "store",
         "version": "1.0.0",
-        "description": "✽ Store Initial commit..."
+        "description": "✽ Store Initial commit...",
+        "dependencies": []
     }, {
         "name": "hello",
         "version": "1.0.10",
-        "description": "✽ ext module 테스트 중..."
+        "description": "✽ ext module 테스트 중...",
+        "dependencies": []
     }, {
         "name": "lodash",
         "version": "1.8.3",
-        "description": "✽ Update 3rd module"
+        "description": "✽ Update 3rd module",
+        "dependencies": []
     }, {
         "name": "moment",
         "version": "2.29.1",
-        "description": "✽ Update 3rd module"
+        "description": "✽ Update 3rd module",
+        "dependencies": []
     }]
 }
