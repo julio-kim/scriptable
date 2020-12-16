@@ -38,10 +38,10 @@ const getLocalVersions = () => {
 
 class Moduler {
     async init () {
-        this.removeVersions = await getRemoteVersions()
+        this.remoteVersions = await getRemoteVersions()
         this.localVersions = getLocalVersions()
 
-        console.log('remote: ' + JSON.stringify(this.removeVersions))
+        console.log('remote: ' + JSON.stringify(this.remoteVersions))
         console.log('local: ' + JSON.stringify(this.localVersions))
     }
 
@@ -49,10 +49,8 @@ class Moduler {
         console.log(`call install ${moduleName}`)
         const { fm, baseDir } = getModuleBaseInfos()
 
-        console.log('install remote: ' + JSON.stringify(this.removeVersions))
-
         await checkTargetModules(this.remoteVersions, moduleName).forEach(async depName => {
-            let remoteModule = this.removeVersions.modules.find(module => module.name === depName)
+            let remoteModule = this.remoteVersions.modules.find(module => module.name === depName)
             if (fm.fileExists(`${baseDir}/${depName}/index.js`)) {
                 let localModule = this.localVersions.modules.find(module => module.name === depName)
                 if (localModule.version < remoteModule.version) {
