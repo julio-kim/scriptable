@@ -51,6 +51,8 @@ class ArtveeBase {
             arts = await super.loadArts(artist)
             arts.forEach(art => store.save(art.id, art))
             store.saveSync()
+        } else {
+            arts = store.all()
         }
 
         console.log(JSON.stringify(arts, null, 4))
