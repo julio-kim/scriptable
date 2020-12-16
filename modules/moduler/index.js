@@ -38,6 +38,9 @@ class Moduler {
     async init () {
         this.removeVersions = await getRemoteVersions()
         this.localVersions = getLocalVersions()
+
+        console.log('remove: ' + JSON.stringify(this.removeVersions))
+        console.log('local: ' + JSON.stringify(this.localVersions))
     }
 
     async install (moduleName) {
