@@ -18,7 +18,7 @@ const checkTargetModules = (versions, baseModuleName) => {
     }
     findDependencies(baseModuleName)
     console.log('total dep: ' + targetModules)
-    return targetModules
+    return [...targetModules]
 }
 
 const getModuleVersion = async (moduleName) => {
