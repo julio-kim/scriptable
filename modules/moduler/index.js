@@ -37,7 +37,7 @@ class Moduler {
         console.log(`call install ${moduleName}`)
         const { fm, baseDir } = getModuleBaseInfos()
 
-        checkTargetModules(this.remoteVersions, moduleName).forEach(depName => {
+        await checkTargetModules(this.remoteVersions, moduleName).forEach(async depName => {
             let remoteModule = this.removeVersions.modules.find(module => module.name === depName)
             if (fm.fileExists(`${baseDir}/${depName}/index.js`)) {
                 let localModule = this.localVersions.modules.find(module => module.name === depName)
