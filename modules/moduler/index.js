@@ -6,7 +6,6 @@ const getModuleBaseInfos = () => {
 
 const checkTargetModules = (versions, baseModuleName) => {
     console.log(`call checkTargetModules, ${baseModuleName}`)
-    console.log(`verions: ${JSON.stringify(versions)}`)
 
     let targetModules = new Set()
     const findDependencies = (moduleName) => {
@@ -49,7 +48,8 @@ class Moduler {
         console.log(`call install ${moduleName}`)
         const { fm, baseDir } = getModuleBaseInfos()
 
-        await checkTargetModules(this.remoteVersions, moduleName).forEach(async depName => {
+        let targetModules = checkTargetModules(this.remoteVersions, moduleName)
+        for (let depName of targetModules) {
             let remoteModule = this.remoteVersions.modules.find(module => module.name === depName)
             if (fm.fileExists(`${baseDir}/${depName}/index.js`)) {
                 let localModule = this.localVersions.modules.find(module => module.name === depName)
@@ -59,7 +59,7 @@ class Moduler {
             } else {
                 await this.installModule(remoteModule)
             }
-        })
+        }
 
         let targetModule = `/modules/${moduleName}`
         console.log(`targetModule: ${targetModule}`)    
