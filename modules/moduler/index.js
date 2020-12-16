@@ -1,11 +1,7 @@
-const getFileManager = () => {
-    return FileManager.iCloud()
-}
-
-const getRemoteVersions = async () => {
-    console.log(`call getRemoteVersions`)
-    let request = new Request(`https://julio-kim.github.io/scriptable/version.json`)
-    return await request.loadJSON()
+const getModuleBaseInfos = () => {
+    const fm = FileManager.iCloud()
+    const dir = fm.documentsDirectory()
+    return { fm, baseDir: `${dir}/modules` }
 }
 
 const checkTargetModules = (versions, baseModuleName) => {
@@ -21,176 +17,135 @@ const checkTargetModules = (versions, baseModuleName) => {
     return [...targetModules]
 }
 
-const getModuleVersion = async (moduleName) => {
-    console.log(`call getModuleVersion, ${moduleName}`)
+const getRemoteVersions = async () => {
     let request = new Request(`https://julio-kim.github.io/scriptable/version.json`)
-    let moduler = await request.loadJSON()
-    return moduler.modules.filter(module => module.name === moduleName)[0]
+    return await request.loadJSON()
 }
 
-const checkUpdate = async (moduleName, version) => {
-    console.log(`call checkUpdate ${moduleName}`)
-    let curModule = await getModuleVersion(moduleName)
-    console.log(`curModule: ${JSON.stringify(curModule)}`)
-    if (curModule) {
-        return (curModule.version !== version) ? true : false
-    } else {
-        throw new Error(`Module not found: ${moduleName}`)
-    }
+const getLocalVersions = () => {
+    const { fm, baseDir } = getModuleBaseInfos()
+    return JSON.parse(fm.readString(`${baseDir}/version.json`))
 }
 
-const installedVersion = (moduleName) => {
-    console.log(`call installedVersion ${moduleName}`)
-    let fm = getFileManager()
-    let dir = fm.documentsDirectory()
-    let baseDir = `${dir}/modules`
-
-    let version = JSON.parse(fm.readString(`${baseDir}/version.json`))
-    let foundModule = version.modules.filter(module => module.name === moduleName)
-    if (foundModule.length > 0) {
-        return foundModule[0]
-    } else {
-        throw new Error(`Module not found: ${moduleName}`)
-    }
-}
-
-const getVersions = () => {
-    let fm = getFileManager()
-    let dir = fm.documentsDirectory()
-    let baseDir = `${dir}/modules`
-
-    let versions = { "modules": [] }
-    if (fm.fileExists(`${baseDir}/version.json`)) {
-        versions = JSON.parse(fm.readString(`${baseDir}/version.json`))
-    }
-    return versions
-}
-
-const updateVersion = async (moduleName, isNew) => {
-    console.log(`call updateVersion ${moduleName}`)
-    let fm = getFileManager()
-    let dir = fm.documentsDirectory()
-    let baseDir = `${dir}/modules`
-    let curModule = await getModuleVersion(moduleName)
-
-    let versions = getVersions()
-    const index = versions.modules.findIndex(item => item.name === curModule.name)
-    if (index >= 0) {
-        versions.modules = [
-            ...versions.modules.slice(0, index),
-            ...versions.modules.slice(index + 1)
-        ]
-    }
-    versions.modules.push(curModule)
-    fm.writeString(`${baseDir}/version.json`, JSON.stringify(versions))
-
-    if (!isNew) {
-        let noti = new Notification()
-        noti.title = `${curModule.name} 모듈이 업데이트 되었습니다.`
-        noti.body = curModule.description
-        noti.sound = 'piano_success'
-        noti.openURL = 'https://julio-kim.github.io/scriptable'
-        noti.schedule()    
-    }
-}
-
-const deleteVersion = (moduleName) => {
-    let fm = getFileManager()
-    let dir = fm.documentsDirectory()
-    let baseDir = `${dir}/modules`
-
-    let versions = getVersions()
-    const index = versions.modules.findIndex(item => item.name === moduleName)
-    if (index >= 0) {
-        versions.modules = [
-            ...versions.modules.slice(0, index),
-            ...versions.modules.slice(index + 1)
-        ]
-    }
-    fm.writeString(`${baseDir}/version.json`, JSON.stringify(versions))
-}
-
-const installModule = async (moduleName) => {
-    console.log(`call installModule ${moduleName}`)
-    let fm = getFileManager()
-    let dir = fm.documentsDirectory()
-    const baseDir = `${dir}/modules`
-
-    if (!fm.isDirectory(`${baseDir}/${moduleName}`)) {
-        fm.createDirectory(`${baseDir}/${moduleName}`)
-    }
-    return writeModule(moduleName, true)
-}
-const updateModule = async (moduleName) => {
-    console.log(`call updateModule ${moduleName}`)
-    return writeModule(moduleName, false)
-}
-
-const writeModule = async (moduleName, isNew) => {
-    console.log(`call writeModule ${moduleName}`)
-    let fm = getFileManager()
-    let dir = fm.documentsDirectory()
-    const baseDir = `${dir}/modules`
-
-    let request = new Request(`https://julio-kim.github.io/scriptable/modules/${moduleName}/index.js`)
-    let moduleFile = await request.loadString()
-    fm.writeString(`${baseDir}/${moduleName}/index.js`, moduleFile)
-
-    await updateVersion(moduleName, isNew)
-}
-
-const install = async (moduleName) => {
-    console.log(`call install ${moduleName}`)
-    let fm = getFileManager()
-    let dir = fm.documentsDirectory()
-    const baseDir = `${dir}/modules`
-
-    if (!fm.isDirectory(baseDir)) {
-        fm.createDirectory(baseDir)
+class Moduler {
+    async init () {
+        this.removeVersions = await getRemoteVersions()
+        this.localVersions = getLocalVersions()
     }
 
-    if (fm.fileExists(`${baseDir}/${moduleName}/index.js`)) {
-        let moduleVer = installedVersion(moduleName)
-        if (await checkUpdate(moduleName, moduleVer.version)) {
-            await updateModule(moduleName)
-        } 
-    } else {
-        await installModule(moduleName)
+    async install (moduleName) {
+        console.log(`call install ${moduleName}`)
+        const { fm, baseDir } = getModuleBaseInfos()
+
+        checkTargetModules(this.remoteVersions, moduleName).forEach(depName => {
+            let remoteModule = this.removeVersions.modules.find(module => module.name === depName)
+            if (fm.fileExists(`${baseDir}/${depName}/index.js`)) {
+                let localModule = this.localVersions.modules.find(module => module.name === depName)
+                if (localModule.version < remoteModule.version) {
+                    await this.updateModule(remoteModule)
+                } 
+            } else {
+                await this.installModule(remoteModule)
+            }
+        })
+
+        let targetModule = `/modules/${moduleName}`
+        console.log(`targetModule: ${targetModule}`)    
+        return importModule(targetModule)
     }
-    let targetModule = `/modules/${moduleName}`
-    console.log(`targetModule: ${targetModule}`)
-    return importModule(targetModule)
-}
 
-const uninstall = async (moduleName) => {
-    let fm = getFileManager()
-    let dir = fm.documentsDirectory()
-    const baseDir = `${dir}/modules`
+    async uninstall (moduleName) {
+        const { fm, baseDir } = getModuleBaseInfos()
 
-    if (!fm.isDirectory(baseDir)) {
-        fm.createDirectory(baseDir)
+        if (fm.fileExists(`${baseDir}/${moduleName}/index.js`)) {
+            fm.remove(`${baseDir}/${moduleName}`)
+            this.deleteVersion(moduleName)
+        } else {
+            throw new Error(`Module not found: ${moduleName}`)
+        }    
     }
 
-    if (fm.fileExists(`${baseDir}/${moduleName}/index.js`)) {
-        fm.remove(`${baseDir}/${moduleName}`)
-        deleteVersion(moduleName)
-    } else {
-        throw new Error(`Module not found: ${moduleName}`)
+    async installModule (remoteModule) {
+        console.log(`call installModule ${remoteModule.name}`)
+        const { fm, baseDir } = getModuleBaseInfos()
+    
+        if (!fm.isDirectory(`${baseDir}/${remoteModule.name}`)) {
+            fm.createDirectory(`${baseDir}/${remoteModule.name}`)
+        }
+        return this.writeModule(remoteModule, true)
+    }
+
+    async updateModule (remoteModule) {
+        console.log(`call updateModule ${remoteModule.name}`)
+        return this.writeModule(remoteModule, false)
+    }
+    
+    async writeModule (remoteModule, isNew) {
+        console.log(`call writeModule ${remoteModule.name}`)
+        const { fm, baseDir } = getModuleBaseInfos()
+    
+        let request = new Request(`https://julio-kim.github.io/scriptable/modules/${remoteModule.name}/index.js`)
+        let moduleFile = await request.loadString()
+        fm.writeString(`${baseDir}/${remoteModule.name}/index.js`, moduleFile)
+    
+        await this.updateVersion(remoteModule, isNew)
+    }
+    
+    async updateVersion (remoteModule, isNew) {
+        console.log(`call updateVersion ${remoteModule.name}`)
+        const { fm, baseDir } = getModuleBaseInfos()
+    
+        const index = this.localVersions.modules.findIndex(item => item.name === remoteModule.name)
+        if (index >= 0) {
+            this.localVersions.modules = [
+                ...this.localVersions.modules.slice(0, index),
+                ...this.localVersions.modules.slice(index + 1)
+            ]
+        }
+        this.localVersions.modules.push(remoteModule)
+        fm.writeString(`${baseDir}/version.json`, JSON.stringify(this.localVersions))
+    
+        if (!isNew) {
+            let noti = new Notification()
+            noti.title = `${remoteModule.name} (${remoteModule.version}) 모듈이 업데이트 되었습니다.`
+            noti.body = remoteModule.description
+            noti.sound = 'piano_success'
+            noti.openURL = 'https://julio-kim.github.io/scriptable'
+            noti.schedule()    
+        }
+    }
+    
+    deleteVersion (moduleName) {
+        const { fm, baseDir } = getModuleBaseInfos()
+        
+        const index = this.localVersions.modules.findIndex(item => item.name === moduleName)
+        if (index >= 0) {
+            this.localVersions.modules = [
+                ...this.localVersions.modules.slice(0, index),
+                ...this.localVersions.modules.slice(index + 1)
+            ]
+        }
+        fm.writeString(`${baseDir}/version.json`, JSON.stringify(this.localVersions))
     }
 }
 
 module.exports = {
-    install: (moduleName) => {
-       return install(moduleName) 
+    install: async (moduleName) => {
+        let moduler = new Moduler()
+        await moduler.init()
+        return moduler.install(moduleName)
     },
     findDependencies: async (moduleName) => {
         let versions = await getRemoteVersions()
         return checkTargetModules(versions, moduleName)
     },
     list: () => {
-        return getVersions().modules
+        return getLocalVersions().modules
     },
-    uninstall: (moduleName) => {
+    uninstall: async (moduleName) => {
+        let moduler = new Moduler()
+        await moduler.init()
+        await moduler.uninstall(moduleName)
         uninstall(moduleName)
     },
     hello: () => {
