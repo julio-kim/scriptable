@@ -16,7 +16,8 @@
 * [I. 시작하기](#i-시작하기)
   * [I-1. Moduler 설치](#i-1-moduler-설치)
   * [I-2. Hello World](#i-2-hello-world)
-  * [I-3. 설치된 Modules 삭제](#i-3-설치된-modules-삭제)
+  * [I-3. Moduler를 이용한 재사용 Module의 설치](#i-3-moduler를-이용한-재사용-module의-설치)
+  * [I-4. 설치된 Modules 삭제](#i-3-설치된-modules-삭제)
 * [II. Modules 소개](#ii-modules-소개)
   * [II-1. CovidStat Widget](#ii-1-covidstat-widget)
   * [II-2. Artvee Widget](#ii-2-artvee-widget)
@@ -61,11 +62,25 @@ hello()
 
 위의 코드가 정상적으로 실행이 되었다면, Moduler의 설치가 완료되었음을 알리는 Notification이 아래와 같이 출력됩니다.
 
-### I-3. 설치된 Modules 삭제
+### I-3. Moduler를 이용한 재사용 Module의 설치
+
+Scriptable Modules 프로젝트에서 개발된 모듈은 Moduler의 **install**을 통해 설치할 수 있습니다.
+
+예를 들어, Covid 모듈의 특정 클래스를 사용한다고 했을 때 아래와 같이 import를 수행할 수 있습니다.
+
+```javascript
+const { install } = importModule('/modules/moduler')
+
+// covid module에서 CovidStat 클래스를 import
+const { CovidStat } = await install('covid')
+...
+```
+
+> **install** 수행시에 개선된 새로운 버전이 발견되면 자동 업데이트를 수행한 후 Import를 진행합니다.
+
+### I-4. 설치된 Modules 삭제
 
 만약에, 설치된 모듈들 삭제하고 싶을 때에는 다음의 코드를 참조해주세요.
-
-> 아래의 코드를 Scriptable App에 복사하여 실행해 주세요.
 
 ```javascript
 const { list, uninstall } = importModule('/modules/moduler')
