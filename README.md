@@ -1,4 +1,4 @@
-# Scriptable Modules
+# Prj. Scriptable Modules
 
 **Scriptable Modules 프로젝트**는 [iOS Scriptable App](https://scriptable.app)에서 동작시킬 App들을 **Module기반**으로 작성하여 손쉽게 사용할 수 있도록 제공합니다.
 
@@ -14,15 +14,19 @@
 
 ### 목차
 * [I. 시작하기](#i-시작하기)
-  * I-1. Module Installer 설치
+  * [I-1. Moduler 설치](#i-1-moduler-설치)
+  * [I-2. Hello World](#i-2-hello-world)
+  * [I-3. 설치된 Modules 삭제](#i-3-설치된-modules-삭제)
 * [II. Modules 소개](#ii-modules-소개)
+  * [II-1. CovidStat Widget](#ii-1-covidstat-widget)
+  * [II-2. Artvee Widget](#ii-2-artvee-widget)
 * [III. Feedback](#iii-feedback)
   
 ## I. 시작하기
 
-### I-1. Module Installer 설치
+### I-1. Moduler 설치
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Moduler
 
 > Hello World!!
 
@@ -39,6 +43,9 @@ let request = new Request('https://julio-kim.github.io/scriptable/modules/module
 let moduleFile = await request.loadString()
 fm.writeString(`${baseDir}/index.js`, moduleFile)
 ```
+
+> 파일 앱에서 `iCloud Drive > Scriptable` 위치로 이동해 보시면, modules 폴더가 생성되어 있고 moduler가 정상적으로 설치된 것을 확인 할 수 있습니다.
+
 
 ### I-2. Hello World
 
