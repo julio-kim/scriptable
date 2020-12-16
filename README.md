@@ -17,7 +17,7 @@
   * [I-1. Moduler 설치](#i-1-moduler-설치)
   * [I-2. Hello World](#i-2-hello-world)
   * [I-3. Moduler를 이용한 재사용 Module의 설치](#i-3-moduler를-이용한-재사용-module의-설치)
-  * [I-4. 설치된 Modules 삭제](#i-3-설치된-modules-삭제)
+  * [I-4. 설치된 Modules 삭제](#i-4-설치된-modules-삭제)
 * [II. Modules 소개](#ii-modules-소개)
   * [II-1. CovidStat Widget](#ii-1-covidstat-widget)
   * [II-2. Artvee Widget](#ii-2-artvee-widget)
