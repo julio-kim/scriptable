@@ -5,7 +5,9 @@ const getModuleBaseInfos = () => {
 }
 
 const checkTargetModules = (versions, baseModuleName) => {
-    console.log(`call checkTargetModules`)
+    console.log(`call checkTargetModules, ${baseModuleName}`)
+    console.log(`verions: ${JSON.stringify(versions)}`)
+
     let targetModules = new Set()
     const findDependencies = (moduleName) => {
         targetModules.add(moduleName)
