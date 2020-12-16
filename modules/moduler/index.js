@@ -41,13 +41,15 @@ class Moduler {
         this.removeVersions = await getRemoteVersions()
         this.localVersions = getLocalVersions()
 
-        console.log('remove: ' + JSON.stringify(this.removeVersions))
+        console.log('remote: ' + JSON.stringify(this.removeVersions))
         console.log('local: ' + JSON.stringify(this.localVersions))
     }
 
     async install (moduleName) {
         console.log(`call install ${moduleName}`)
         const { fm, baseDir } = getModuleBaseInfos()
+
+        console.log('install remote: ' + JSON.stringify(this.removeVersions))
 
         await checkTargetModules(this.remoteVersions, moduleName).forEach(async depName => {
             let remoteModule = this.removeVersions.modules.find(module => module.name === depName)
