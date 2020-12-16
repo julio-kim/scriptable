@@ -46,7 +46,9 @@
         "name": "hello",
         "version": "1.0.10",
         "description": "✽ ext module 테스트 중...",
-        "dependencies": []
+        "dependencies": [
+            "lodash"
+        ]
     }, {
         "name": "lodash",
         "version": "1.8.3",
