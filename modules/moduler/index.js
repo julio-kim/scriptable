@@ -9,15 +9,15 @@ const getRemoteVersions = async () => {
 }
 
 const checkTargetModules = (versions, baseModuleName) => {
+    console.log(`call checkTargetModules`)
     let targetModules = new Set()
     const findDependencies = (moduleName) => {
         targetModules.add(moduleName)
-        console.log(moduleName + ' added')
         versions.modules.find(ver => ver.name === moduleName)
             .dependencies.forEach(depName => findDependencies(depName))
     }
     findDependencies(baseModuleName)
-    console.log('total dep: ' + targetModules)
+    console.log('total dep: ' + [...targetModules])
     return [...targetModules]
 }
 
