@@ -3,7 +3,7 @@ const getFileManager = () => {
 }
 
 const getRemoteVersions = async () => {
-    console.log(`call getModuleVersion, ${moduleName}`)
+    console.log(`call getRemoteVersions`)
     let request = new Request(`https://julio-kim.github.io/scriptable/version.json`)
     return await request.loadJSON()
 }
