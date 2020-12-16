@@ -112,24 +112,3 @@ bar | baz
 Module을 사용하시면서 버그로 인한 불편한 점이나, 개선사항이 필요하신 경우 아래의 이슈 링크에서 진행 부탁드립니다.
 
 * [Scriptable modules issues](https://github.com/julio-kim/scriptable/issues)
-
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/)
