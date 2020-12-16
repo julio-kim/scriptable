@@ -24,7 +24,13 @@ const getRemoteVersions = async () => {
 
 const getLocalVersions = () => {
     const { fm, baseDir } = getModuleBaseInfos()
-    return JSON.parse(fm.readString(`${baseDir}/version.json`))
+    if (fm.fileExists(`${baseDir}/version.json`)) {
+        return JSON.parse(fm.readString(`${baseDir}/version.json`))
+    } else {
+        let verions = {modules:[]}
+        fm.writeString(`${baseDir}/${remoteModule.name}/index.js`, JSON.stringify(versions))
+        return versions
+    }
 }
 
 class Moduler {
