@@ -97,9 +97,9 @@ const { list, uninstall } = importModule('/modules/moduler')
 list().map(ver => ver.name).forEach(ver => uninstall(ver))
 ```
 
-## II. App Modules 소개
+> 이제 본격적으로 Scriptable Modules 프로젝트에서 개발 중인 모듈들을 소개해 보겠습니다~:)
 
-이제 본격적으로 Scriptable Modules 프로젝트에서 개발 중인 모듈들을 소개해 보겠습니다~:)
+## II. App Modules 소개
 
 ### II-1. CovidStat Widget
 
