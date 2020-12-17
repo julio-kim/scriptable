@@ -1,2 +1,2 @@
-[Home](/scriptable) > Covid Widget
-# Covid Widget
+[Home](/scriptable) > CovidStat Widget
+# CovidStat Widget
