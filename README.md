@@ -9,6 +9,7 @@
 ### 주요기능
 
 * 반복적으로 사용되는 코드를 **module 기반**으로 작성하여 **재사용성**을 높이고 효율적인 개발이 가능하도록 지원
+* 
 * Moduler를 통해 설치된 모듈들의 **버전을 관리**하여 개선 버전이 배포되었을 때 **자동 업데이트 지원**
 * 미려한 디자인의 다양한 Scriptable App 배포 예정~:)
 
@@ -18,7 +19,7 @@
   * [I-2. Hello World (정상 설치 확인)](#i-2-hello-world-정상-설치-확인)
   * [I-3. Moduler를 이용한 재사용 Module의 설치](#i-3-moduler를-이용한-재사용-module의-설치)
   * [I-4. 설치된 Modules 삭제](#i-4-설치된-modules-삭제)
-* [II. Modules 소개](#ii-modules-소개)
+* [II. App Modules 소개](#ii-app-modules-소개)
   * [II-1. CovidStat Widget](#ii-1-covidstat-widget)
   * [II-2. Artvee Widget](#ii-2-artvee-widget)
 * [III. Feedback](#iii-feedback)
@@ -55,12 +56,13 @@ Moduler의 설치가 완료되었으니, 정상적으로 설치되었는지 확�
 > 아래의 코드를 Scriptable App에 복사하여 실행해 주세요.
 
 ```javascript
-const { hello } = importModule('/modules/moduler')
+const { install } = importModule('/modules/moduler')
+const { hello } = await install('hello')
 
-hello()
+hello('julio')
 ```
 
-위의 코드가 정상적으로 실행이 되었다면, Moduler의 설치가 완료되었음을 알리는 Notification이 아래와 같이 출력됩니다.
+위의 코드가 정상적으로 실행이 되었다면, **hello** 모듈을 포함한 **종속모듈이 같이 설치**되고 아래와 같이 **Notification이 출력**됩니다.
 
 ### I-3. Moduler를 이용한 재사용 Module의 설치
 
@@ -89,7 +91,7 @@ const { list, uninstall } = importModule('/modules/moduler')
 list().map(ver => ver.name).forEach(ver => uninstall(ver))
 ```
 
-## II. Modules 소개
+## II. App Modules 소개
 
 이제 본격적으로 Scriptable Modules 프로젝트에서 개발 중인 모듈들을 소개해 보겠습니다~:)
 
@@ -105,7 +107,19 @@ bar | baz
 >
 > 12월 중, 공개 예정입니다~:)
 
-## III. Feedback
+## III. Component Modules 소개
+
+### III-1. Store
+
+### III-2. SimpleChart
+
+## IV. 3rd Modules 소개
+
+### IV-1. Lodash
+
+### IV-2. Moment.js
+
+## V. Feedback
 
 > Scriptable Modules 프로젝트는 개발 피드백을 받고 있습니다~:)
 
