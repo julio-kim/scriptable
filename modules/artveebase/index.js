@@ -13,8 +13,6 @@ class ArtveeBase {
         const baseUrl = 'https://artvee.com'
         const source = (artist) ? `${baseUrl}/artist/${artist}/?per_page=200` : baseUrl
 
-        console.log(source)
-
         let webView = new WebView()
         await webView.loadURL(source)
     
@@ -55,7 +53,7 @@ class ArtveeBase {
             arts = store.all()
         }
 
-        console.log(JSON.stringify(arts, null, 4))
+        console.log('arts: ' + JSON.stringify(arts, null, 4))
         
         let todayIdx = Math.floor(Math.random() * arts.length)
         let todayArt = arts[todayIdx]
