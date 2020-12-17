@@ -3,3 +3,4 @@ theme: jekyll-theme-cayman
 title: Scriptable Modules
 email: julio@pnoni.com
 url: https://julio-kim.github.io/scriptable/
+baseUrl: /scriptable
