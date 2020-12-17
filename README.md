@@ -22,7 +22,7 @@
 * [II. App Modules 소개](#ii-app-modules-소개)
   * [II-1. CovidStat Widget](#ii-1-covidstat-widget)
   * [II-2. Artvee Widget](#ii-2-artvee-widget)
-* [III. Component Modules 소개](#ii-component-modules-소개)
+* [III. Component Modules 소개](#iii-component-modules-소개)
   * [III-1. Store](#iii-1-store)
   * [III-2. SimpleChart](#iii-2-simplechart)
 * [IV. 3rd Modules 소개](#iv-3rd-modules-소개)
