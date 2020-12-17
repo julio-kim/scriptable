@@ -115,11 +115,15 @@ bar | baz
 
 ## III. Component Modules 소개
 
+Scriptable App 에서 사용 할 수 있는 직접 제작한 **재사용 컴포넌트**들을 추가하고 있습니다. 아래의 재사용 컴포넌트를 활용하여 Scriptable App 개발시 생산성을 높여보세요.
+
 ### III-1. Store
 
 ### III-2. SimpleChart
 
 ## IV. 3rd Modules 소개
+
+Scriptable App 에서 사용가능한 유용한 **3rd 라이브러리**들을 추가하고 있습니다. 아래의 라이브러리를 활용하여 Scriptable App 개발시 생산성을 높여보세요.
 
 ### IV-1. Lodash
 
