@@ -47,7 +47,7 @@
         "version": "1.0.0",
         "description": "✽ lodash dependencies added...",
         "dependencies": [
-            "lodash"
+            "lodash", "moment"
         ]
     }, {
         "name": "lodash",
